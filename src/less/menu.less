@@ -1,0 +1,62 @@
+@import "variables";
+@import "hexMenu";
+
+#menu {
+  margin-left: -10px;
+  height: auto;
+  .hexOffsetY(2);
+  top: 0;
+  position: absolute;
+  ul.hex {
+    li.mike {
+      background-color: transparent;
+      width: @hexSize * @hexRatio;
+      height: auto;
+      margin: -7px 0 0 10px;
+      z-index: 1010;
+      pointer-events: none;
+      & > * {
+        background-color: transparent;
+      }
+    }
+    li {
+      vertical-align: middle;
+      &:not(.noHex):not(.helperHex) {
+        & > * {
+          background-size: @hexSize / 3 @hexSize / (3 / @hexRatio), 100% 100%;
+          background-position: 50% 50%, 50% 50%;
+          background-repeat: no-repeat;
+          transition: background-size @hexTiming ease-in-out;
+        }
+        &:hover > * {
+          background-size: @hexSize / 2 @hexSize / (2 / @hexRatio), 100% 100%;
+        }
+      }
+      .linkBG(@imageUrl, @bgColor, @bgDarken: 25%) {
+        background-color: @bgColor;
+        background-image: url(@imageUrl), radial-gradient(circle at center, @bgColor 0%, darken(@bgColor, @bgDarken) 100%);
+      }
+      &.deviantart > * {
+        .linkBG("/img/icons/deviantart.svg", #4c5c52);
+      }
+      &.flickr > * {
+        .linkBG("/img/icons/flickr.svg", #FFF, 50%);
+      }
+      &.linkedin > * {
+        .linkBG("/img/icons/linkedin.svg", #0073B2);
+      }
+      &.goodreads > * {
+        .linkBG("/img/icons/goodreads.svg", #F0EEE2, 50%);
+      }
+      &.lastfm > * {
+        .linkBG("/img/icons/lastfm.svg", #E21B23);
+      }
+      &.steam > * {
+        .linkBG("/img/icons/steam.svg", #2b2f38);
+      }
+      &.github > * {
+        .linkBG("/img/icons/github.svg", #FFF, 50%);
+      }
+    }
+  }
+}
