@@ -13,6 +13,16 @@ function GalleryDisplay(props) {
     event.currentTarget.style.backgroundPosition = "50% 50%";
   };
 
+  const itemClasses = function(item, index, columns) {
+    let classes, xOffset, yOffset;
+    classes = ['hexagon', 'hexAnim'];
+    if (item.isMature) classes.push('galleryItem__mature');
+    yOffset = Math.floor(index / columns);
+    xOffset = (index % columns) * 2 + yOffset % 2;
+    classes.push('hexOffsetX_' + xOffset, 'hexOffsetY_' + yOffset);
+    return classes;
+  };
+
   const {items, columns} = props;
   return (
     <div id="gallery">
@@ -28,7 +38,7 @@ function GalleryDisplay(props) {
             key={item.id}
             onMouseMove={mouseMoveHandler}
             onMouseOut={mouseOutHandler}
-            className={classNames(GalleryService.itemClasses(index, columns))}
+            className={classNames(itemClasses(item, index, columns))}
             style={{backgroundImage: 'url("' + item.thumbnail + '")'}}
           >
             <a href={item.url} />

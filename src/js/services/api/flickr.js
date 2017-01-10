@@ -20,6 +20,7 @@ export default class Flickr {
       id: item.id,
       url: Flickr.config.endpoints.photo + item.id,
       dateTime: item.dateupload,
+      isMature: false,
       thumbnail: item.url_s
     }
   }

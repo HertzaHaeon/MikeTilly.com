@@ -26,13 +26,4 @@ export default class GalleryService {
   static sliceItems(items, offset, rows, columns) {
     return items.slice(offset * columns, (offset + rows) * columns);
   }
-
-  static itemClasses(index, columns) {
-    let classes, xOffset, yOffset;
-    classes = ['hexagon', 'hexAnim'];
-    yOffset = Math.floor(index / columns);
-    xOffset = (index % columns) * 2 + yOffset % 2;
-    classes.push('hexOffsetX_' + xOffset, 'hexOffsetY_' + yOffset);
-    return classes;
-  }
 }

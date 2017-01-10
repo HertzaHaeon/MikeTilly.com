@@ -21,10 +21,12 @@ export default class deviantArt {
   }
 
   static parseItem(item, index) {
+
     return {
       id: item.deviationid,
       url: item.url,
       dateTime: item.published_time,
+      isMature: item.is_mature,
       thumbnail: item.thumbs[2].width >= 100 && item.thumbs[2].height >= 100 ? item.thumbs[2].src : item.preview.src
     };
   }
