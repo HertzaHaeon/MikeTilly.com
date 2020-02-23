@@ -1,41 +1,17 @@
-@import "variables";
+@import "_breakpoints";
 
-#container, #app {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-#scroller {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  perspective: 1px;
-  perspective-origin: 50vw 50vh;
-  //scroll-snap-type: mandatory;
-  //scroll-snap-points-y: repeat(@hexSize);
-  .background {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    &:nth-child(1) {
-      background: url(/img/hexagon.svg) 25% 0 no-repeat, linear-gradient(to bottom, transparent 0%, transparent 50%, $palette0 50%, $palette5 100%);
-      background-size: $hexSize * 4 auto, auto auto;
-      transform: translate(0, 10000px) translateZ(-8px) scale(9);
-    }
-    &:nth-child(2) {
-      background: url(/img/bgHexes_flattened.svg) 50% 0 repeat-x;
-      background-size: auto auto;
-      transform: translate(0, 7000px) translateZ(-5px) scale(6);
-    }
+#app {
+  padding: 5rem;
+  width: calc(100% - 10rem);
+  min-height: 100%;
+  @media (max-width: map_get($breakpoints, md)) {
+    padding: 2.5rem;
+    width: calc(100% - 5rem);
+    height: calc(100% - 5rem);
   }
-}
-
-#wrapper {
-  top: $hexSize / 2;
-  left: 10px;
-  position: fixed;
-  z-index: 1000;
+  @media (max-width: map_get($breakpoints, sm)) {
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+  }
 }

@@ -1,18 +1,68 @@
-@import "variables";
-@import "hexMenu";
+@import "_breakpoints";
+@import "_variables";
 
-#gallery {
-  .hexOffsetY(5);
-  top: 0;
-  position: absolute;
-  height: 2000px;
-  width: auto;
-  overflow: visible;
-}
+.Gallery {
+  width: 100%;
+  height: calc(100% - 10rem);
+  position: relative;
+  pointer-events: none;
 
-.galleryItem__mature {
-  filter: blur(5px);
-  &:hover {
-    filter: none;
+  &:hover, &:focus-within {
+    .GalleryItem {
+      opacity: 0.5;
+    }
+  }
+
+  .GalleryItem {
+    outline: none;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.99);
+    transition-property: transform, opacity, left, top;
+    transition-duration: 0.1s, 0.2s;
+    transition-timing-function: ease-out, linear, ease-in-out;
+    z-index: 0;
+    display: block;
+    pointer-events: none;
+    & > * {
+      background-color: $palette0;
+      background-size: cover;
+      background-position: 50% 50%;
+      height: 100%;
+      width: 100%;
+      display: block;
+      clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+      pointer-events: all;
+      filter: none;
+    }
+    &:hover, &:focus {
+      opacity: 1;
+      filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.5));
+      transform: translate(-50%, -50%) scale(2);
+      z-index: 100;
+    }
+
+    &.GalleryItem--loading {
+      opacity: 0;
+    }
+
+    &.GalleryItem--mature {
+      & > * {
+        filter: blur(0.5rem);
+      }
+
+      &:hover, &:focus {
+        filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.5));
+        & > * {
+          filter: none;
+        }
+      }
+    }
+
+    &#GalleryItem-local_playsome {
+      & > * {
+        background-size: 65%;
+        background-repeat: no-repeat;
+      }
+    }
   }
 }

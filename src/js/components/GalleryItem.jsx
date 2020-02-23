@@ -13,17 +13,24 @@ const mouseOutHandler = event => {
 function useImageLoader(src) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const onLoaded = () => setLoading(false);
-  const onError = error => setError(error);
+  const image = new Image();
+  const unlisten = () => {
+    image.removeEventListener("load", onLoaded);
+    image.removeEventListener("error", onError);
+  };
+  const onLoaded = () => {
+    setLoading(false);
+    unlisten();
+  }
+  const onError = error => {
+    setError(error);
+    unlisten();
+  }
   useEffect(() => {
-    const image = new Image();
     image.addEventListener("load", onLoaded);
     image.addEventListener("error", onError);
     image.src = src;
-    return () => {
-      image.removeEventListener("load", onLoaded);
-      image.removeEventListener("error", onError);
-    };
+    return unlisten;
   }, [src]);
   return [loading, error];
 }

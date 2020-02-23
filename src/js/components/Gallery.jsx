@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import hexgrid from "../services/hexgrid";
 import Menu from "./Menu";
 import GalleryItem from "./GalleryItem";
+import * as breakpoints from "scss/_breakpoints.scss";
+import * as style from "scss/_variables.scss";
 
 const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   const [width, setWidth] = useState(0);
@@ -25,13 +27,13 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   );
 
   useEffect(() => {
-    let size = 150;
-    if (width <= 500) {
-      size = 100;
-    } else if (width <= 300) {
-      size = 75;
-    } else if (width <= 200) {
-      size = 50;
+    let size = style.gridSize * 10;
+    if (width <= breakpoints.sm) {
+      size = style.gridSize * 4;
+    } else if (width <= breakpoints.md) {
+      size = size = style.gridSize * 6;
+    } else if (width <= breakpoints.lg) {
+      size = size = style.gridSize * 8;
     }
     setHexGrid(
       hexgrid({

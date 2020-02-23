@@ -1,0 +1,11 @@
+$breakpoints: (
+  "lg": 1024px,
+  "md": 640px,
+  "sm": 320px
+);
+
+:export {
+  lg: map_get($breakpoints, lg) / 1px;
+  md: map_get($breakpoints, md) / 1px;
+  sm: map_get($breakpoints, sm) / 1px;
+}

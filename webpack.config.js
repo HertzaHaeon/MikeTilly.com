@@ -24,7 +24,10 @@ module.exports = {
     modules: ["node_modules", "src/js/", "src/css/", "src/scss/"],
     extensions: [" ", ".js", ".jsx", ".scss", ".css"],
     alias: {
-      img: path.resolve(__dirname, "./assets/img")
+      component: path.resolve(__dirname, "./src/js/components"),
+      img: path.resolve(__dirname, "./assets/img"),
+      scss: path.resolve(__dirname, "./src/scss"),
+      services: path.resolve(__dirname, "./src/services")
     }
   },
   plugins: [
