@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { ResizeObserver } from '@juggle/resize-observer';
 
 import hexgrid from "../services/hexgrid";
 import Menu from "./Menu";

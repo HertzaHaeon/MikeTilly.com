@@ -9,6 +9,17 @@ const mouseMoveHandler = event => {
 const mouseOutHandler = event => {
   event.currentTarget.style.backgroundPosition = "50% 50%";
 };
+const touchStartHandler = event => {
+  const el = event.currentTarget
+  if (document.activeElement === el) {
+    el.click()
+  } else {
+    el.focus()
+  }
+}
+const touchEndHandler = event => {
+  event.preventDefault()
+}
 
 function useImageLoader(src) {
   const [loading, setLoading] = useState(true);
@@ -55,6 +66,8 @@ const GalleryItem = ({ item, height, width, x, y, animate = true, className, ...
         left: x,
         top: y
       }}
+      onTouchStart={touchStartHandler}
+      onTouchEnd={touchEndHandler}
       {...otherProps}
     >
       <div
