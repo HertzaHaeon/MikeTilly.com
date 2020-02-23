@@ -21,8 +21,8 @@
     width: 100%;
     overflow: hidden;
     &:nth-child(1) {
-      background: url(/img/hexagon.svg) 25% 0 no-repeat, linear-gradient(to bottom, transparent 0%, transparent 50%, @palette0 50%, @palette5 100%);
-      background-size: @hexSize * 4 auto, auto auto;
+      background: url(/img/hexagon.svg) 25% 0 no-repeat, linear-gradient(to bottom, transparent 0%, transparent 50%, $palette0 50%, $palette5 100%);
+      background-size: $hexSize * 4 auto, auto auto;
       transform: translate(0, 10000px) translateZ(-8px) scale(9);
     }
     &:nth-child(2) {
@@ -34,7 +34,7 @@
 }
 
 #wrapper {
-  top: @hexSize / 2;
+  top: $hexSize / 2;
   left: 10px;
   position: fixed;
   z-index: 1000;

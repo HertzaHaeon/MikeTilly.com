@@ -11,7 +11,7 @@
   width: round(@hexSize * @hexRatio, 1);
   height: @hexSize;
   opacity: 1;
-  pointer-events: none;
+  pointer-events: all;
   transform: translateZ(0);
   backface-visibility: hidden;
   transform-style: preserve-3d;

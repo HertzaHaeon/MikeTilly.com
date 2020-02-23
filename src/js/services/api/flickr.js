@@ -6,7 +6,7 @@ export default class Flickr {
     return fetch(url)
       .then(response => response.json())
       .then(response => {
-        if (response.stat == 'fail') {
+        if (response.stat === 'fail') {
           throw response.message;
         }
         //localCache.set(url, response, Flickr.config.cacheRequestAge);
@@ -18,10 +18,16 @@ export default class Flickr {
   static parseItem(item, index) {
     return {
       id: item.id,
+      title: item.title,
       url: Flickr.config.endpoints.photo + item.id,
       dateTime: item.dateupload,
+      animate: true,
       isMature: false,
-      thumbnail: item.url_s
+      thumbnail: {
+        url: item.url_s,
+        width: item.width_s,
+        height: item.height_s
+      }
     }
   }
 }

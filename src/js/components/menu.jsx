@@ -1,33 +1,59 @@
-import React from 'react';
+import React from "react";
 
-export default function Menu() {
+import Mike from "img/Mike_avatar_hex.svg";
+
+function Menu({ height, width, x, y }) {
+  const Y_SCALE = 1.03345;
+  const Y_OFFSET = -0.045;
   return (
-    <div id="menu">
-      <ul className="hex">
-        <li className="mike noHex hexOffsetX_0 hexOffsetY_1"><img src="/img/Mike_avatar_hex.svg" alt="" /></li>
-        <li className="helperHex helperHex_3x hexZ_0 hexOffsetX_0 hexOffsetY_1"><span /></li>
-        <li className="deviantart hexZ_9 hexAnim hexDelay_1 hexHoverDelay_0 hexHoverOffsetX_1 hexHoverOffsetY_0 hexOffsetX_0 hexOffsetY_1">
+    <div
+      id="menu"
+      style={{
+        "--hex-size": `${width}px`,
+        left: x - width / 2,
+        top: y - height / 2
+      }}
+    >
+      <ul className="hexMenu hexMenu--focusable">
+        <li className="mike hex hex--visible hex--hoverZ11 hex--z10" tabIndex="1">
+          <Mike
+            style={{
+              position: "absolute",
+              height: height * Y_SCALE,
+              width: width,
+              top: height * Y_OFFSET
+            }}
+          />
+        </li>
+        <li className="hex hex--helper hex--z0 hex--offsetX-1 hex--offsetY1">
+          <span />
+        </li>
+        <li className="deviantart hex hex--z9 hex--animate hex--delay1 hex--hoverDelay0 hex--hoverOffsetX2 hex--hoverOffsetY0 hex--offsetX0 hex--offsetY0" tabIndex={2}>
           <a href="http://hertzahaeon.deviantart.com/" />
         </li>
-        <li className="flickr hexZ_8 hexAnim hexDelay_1 hexHoverDelay_0 hexHoverOffsetX_2 hexHoverOffsetY_1 hexOffsetX_0 hexOffsetY_1">
+        <li className="flickr hex hex--z8 hex--animate hex--delay0 hex--hoverDelay1 hex--hoverOffsetX4 hex--hoverOffsetY0 hex--offsetX2 hex--offsetY0" tabIndex={3}>
           <a href="http://www.flickr.com/photos/hertzahaeon/" />
         </li>
-        <li className="linkedin hexZ_8 hexAnim hexDelay_1 hexHoverDelay_0 hexHoverOffsetX_-1 hexHoverOffsetY_0 hexOffsetX_0 hexOffsetY_1">
-          <a href="http://www.linkedin.com/in/mikaeltilly" />
+
+        <li className="spotify hex hex--z7 hex--animate hex--delay2 hex--hoverDelay0 hex--hoverOffsetX1 hex--hoverOffsetY1 hex--offsetX0 hex--offsetY0" tabIndex={4}>
+          <a href="https://open.spotify.com/user/hertzahaeon" />
         </li>
-        <li className="goodreads hexZ_8 hexAnim hexDelay_1 hexHoverDelay_1 hexHoverOffsetX_-1 hexHoverOffsetY_2 hexOffsetX_0 hexOffsetY_1">
+        <li className="goodreads hex hex--z6 hex--animate hex--delay1 hex--hoverDelay1 hex--hoverOffsetX3 hex--hoverOffsetY1 hex--offsetX1 hex--offsetY1" tabIndex={5}>
           <a href="http://www.goodreads.com/user/show/7193175-mikael-tilly" />
         </li>
-        <li className="lastfm hexZ_8 hexAnim hexDelay_1 hexHoverDelay_1 hexHoverOffsetX_1 hexHoverOffsetY_2 hexOffsetX_0 hexOffsetY_1">
-          <a href="http://www.last.fm/user/HertzaHaeon" />
-        </li>
-        <li className="steam hexZ_8 hexAnim hexDelay_1 hexHoverDelay_1 hexHoverOffsetX_-2 hexHoverOffsetY_1 hexOffsetX_0 hexOffsetY_1">
+        <li className="steam hex hex--z5 hex--animate hex--delay0 hex--hoverDelay2 hex--hoverOffsetX5 hex--hoverOffsetY1 hex--offsetX3 hex--offsetY1" tabIndex={6}>
           <a href="http://steamcommunity.com/id/hertzahaeon" />
         </li>
-        <li className="github hexZ_7 hexAnim hexDelay_0 hexHoverDelay_2 hexHoverOffsetX_0 hexHoverOffsetY_3 hexOffsetX_-1 hexOffsetY_2">
+
+        <li className="github hex hex--z4 hex--animate hex--delay1 hex--hoverDelay1 hex--hoverOffsetX0 hex--hoverOffsetY2 hex--offsetX1 hex--offsetY1" tabIndex={7}>
           <a href="https://github.com/HertzaHaeon" />
+        </li>
+        <li className="linkedin hex hex--z3 hex--animate hex--delay0 hex--hoverDelay2 hex--hoverOffsetX2 hex--hoverOffsetY2 hex--offsetX0 hex--offsetY2" tabIndex={8}>
+          <a href="http://www.linkedin.com/in/mikaeltilly" />
         </li>
       </ul>
     </div>
   );
 }
+
+export default Menu;

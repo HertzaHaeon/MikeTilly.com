@@ -1,0 +1,118 @@
+@import "variables";
+
+$HEX_RATIO: 0.8660254;
+$hexScaling: 1;
+$hexColor: #64C7CC;
+$hexTiming: 0.15s;
+
+:root {
+  --hex-size: 100px;
+}
+
+.hexMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  pointer-events: all;
+  filter: none;
+
+  & > .hex {
+    overflow: hidden;
+    display: block;
+    width: var(--hex-size);
+    height: calc(var(--hex-size) * #{1 / $HEX_RATIO});
+    transform: scale($hexScaling);
+    position: absolute;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    visibility: hidden;
+    & > * {
+      background-color: $hexColor;
+      color: #fff;
+      text-align: center;
+      line-height: calc(var(--hex-size) * #{1 / $HEX_RATIO});
+      display: block;
+      height: 100%;
+      pointer-events: auto;
+    }
+    &.hex--visible {
+      visibility: visible;
+    }
+    &.hex--helper {
+      background-color: transparent;
+      transform: scale(1);
+      pointer-events: none;
+      & > * {
+        background-color: transparent;
+      }
+      &.hex--helper-2x {
+        left: calc(var(--hex-size) * #{-0.5 * $hexScaling} - (#{($hexScaling - 1) * 0.5} * var(--hex-size)));
+        top: 0;
+        width: calc(var(--hex-size) * #{2 * $hexScaling});
+        height: calc(var(--hex-size) * #{2 * $hexScaling});
+      }
+      &.hex--helper-3x {
+        left: calc(var(--hex-size) * -1);
+        top: 0;
+        width: calc(var(--hex-size) * 3);
+        height: calc(var(--hex-size) * 3);
+      }
+    }
+
+    // Hex positioning classes
+    @for $n from -15 through 15 {
+      // Generate x & y offsets for hexes
+      &.hex--offsetY#{$n} {
+        top: calc(var(--hex-size) * #{$HEX_RATIO * $n});
+      }
+      &.hex--offsetX#{$n} {
+        left: calc(var(--hex-size) * #{0.5 * $n});
+      }
+      // Generate z index classes
+      &.hex--z#{$n} {
+        z-index: $n;
+      }
+    }
+    // Generate animation delays
+    @for $n from 0 through 10 {
+      &.hex.hex--delay#{$n} {
+        transition-delay: $hexTiming * $n;
+      }
+    }
+
+    &.hex--animate {
+      transition: background-position $hexTiming ease-in-out,
+      left $hexTiming ease-in-out,
+      top $hexTiming ease-in-out,
+      transform $hexTiming ease-in-out,
+      opacity $hexTiming linear,
+      visibility $hexTiming linear,
+      z-index $hexTiming linear;
+    }
+  }
+
+  &:hover, &.hexMenu--focusable:focus-within {
+    & > .hex {
+      visibility: visible;
+      // Generate hover offsets
+      @for $n from -15 through 15 {
+        &.hex--hoverOffsetY#{$n} {
+          top: calc(var(--hex-size) * #{$HEX_RATIO * $n});
+        }
+        &.hex--hoverOffsetX#{$n} {
+          left: calc(var(--hex-size) * #{0.5 * $n});
+        }
+        // Generate z index classes
+        &.hex--hoverZ#{$n} {
+          z-index: $n + 1000;
+        }
+      }
+      // Generate animation delays
+      @for $n from 0 through 10 {
+        &.hex--hoverDelay#{$n} {
+          transition-delay: $hexTiming*$n;
+        }
+      }
+    }
+  }
+}

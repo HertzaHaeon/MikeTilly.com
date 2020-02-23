@@ -21,13 +21,19 @@ export default class deviantArt {
   }
 
   static parseItem(item, index) {
-
+    let thumbnail = item.thumbs.find(thumb => thumb.width >= 200 && thumb.height >= 200)
+    thumbnail = thumbnail || item.preview
     return {
       id: item.deviationid,
+      title: item.title,
       url: item.url,
       dateTime: item.published_time,
       isMature: item.is_mature,
-      thumbnail: item.thumbs[2].width >= 100 && item.thumbs[2].height >= 100 ? item.thumbs[2].src : item.preview.src
+      thumbnail: {
+        url: thumbnail.src,
+        width: thumbnail.width,
+        height: thumbnail.height
+      }
     };
   }
 }

@@ -1,13 +1,23 @@
-import apis from './apis';
+import apis from "./apis";
 
 export default class GalleryService {
-  static load(apiCount = 20) {
-    return Promise.all(
-      apis.map(function(api) {
-        return api.fetchItems(apiCount);
-      }))
-      .then(results => results.reduce((prev, curr) => prev.concat(curr), []))
-      .then(GalleryService.sortItems);
+  static subscribe(subscriber, userOptions = {}) {
+    const options = {
+      count: userOptions.count || 20,
+      totalCount: userOptions.count || 20,
+    }
+    let items = []
+    
+    Promise.all(
+      apis.map(api =>
+        api
+          .fetchItems(options.count)
+          .then(results => {
+            items = GalleryService.sortItems(items.concat(results))
+            subscriber.next(items)
+          })
+      )
+    )
   }
 
   static sortItems(items) {
@@ -21,9 +31,5 @@ export default class GalleryService {
           return 0;
       }
     });
-  }
-
-  static sliceItems(items, offset, rows, columns) {
-    return items.slice(offset * columns, (offset + rows) * columns);
   }
 }

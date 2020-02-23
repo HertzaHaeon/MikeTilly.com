@@ -1,0 +1,71 @@
+@import "variables";
+@import "hexMenu";
+
+#menu {
+  height: auto;
+  top: 0;
+  position: absolute;
+
+  .hexMenu {
+    z-index: 11;
+    .hex.mike {
+      background-color: transparent;
+      outline: none;
+      overflow: visible;
+      clip-path: none;
+      position: absolute;
+      & > * {
+        background-color: transparent;
+      }
+    }
+    &:hover, &:focus-within {
+      filter: drop-shadow(10px 10px 0 rgba(0, 0, 0, 0.5));
+    }
+    .hex {
+      vertical-align: middle;
+      &:not(.hex--helper) {
+        & > * {
+          background-size: calc(var(--hex-size) / 3) calc(var(--hex-size) / (#{3 / $HEX_RATIO})), 100% 100%;
+          background-position: 50% 50%, 50% 50%;
+          background-repeat: no-repeat;
+          transition: background-size $hexTiming ease-in-out;
+        }
+        &:hover, &:focus-within {
+          & > * {
+            background-size: calc(var(--hex-size) / 2) calc(var(--hex-size) / (#{2 / $HEX_RATIO})), 100% 100%;
+          }
+        }
+      }
+
+      @mixin linkBG($imageUrl, $bgColor, $bgDarken: 25%) {
+        background-color: $bgColor;
+        background-image: url($imageUrl), radial-gradient(circle at center, $bgColor 0%, darken($bgColor, $bgDarken) 100%);
+      }
+      &.deviantart > * {
+        @include linkBG("/img/icons/deviantart.svg", #4c5c52);
+      }
+      &.flickr > * {
+        @include linkBG("/img/icons/flickr.svg", #FFF, 50%);
+      }
+      &.github > * {
+        @include linkBG("/img/icons/github.svg", #FFF, 50%);
+      }
+      &.goodreads > * {
+        @include linkBG("/img/icons/goodreads.svg", #F0EEE2, 50%);
+      }
+      &.lastfm > * {
+        @include linkBG("/img/icons/lastfm.svg", #E21B23);
+      }
+      &.linkedin > * {
+        @include linkBG("/img/icons/linkedin.svg", #0073B2);
+      }
+      &.spotify > * {
+        @include linkBG("/img/icons/spotify.svg", #302f2f);
+      }
+      &.steam > * {
+        @include linkBG("/img/icons/steam.svg", #2b2f38);
+      }
+
+    }
+  }
+}

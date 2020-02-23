@@ -10,7 +10,7 @@ const config = {
       initial: 3,
       min: 3,
       max: 5,
-      height: 160
+      height: 25
     },
     margin: {
       left: 450
