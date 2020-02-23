@@ -63,8 +63,8 @@ const GalleryItem = ({ item, height, width, x, y, animate = true, className, ...
       style={{
         height: height,
         width: width,
-        left: x,
-        top: y
+        '--x': `${x}px`,
+        '--y': `${y}px`,
       }}
       onTouchStart={touchStartHandler}
       onTouchEnd={touchEndHandler}

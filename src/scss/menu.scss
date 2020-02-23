@@ -1,6 +1,11 @@
 @import "_variables";
 @import "hexMenu";
 
+@mixin linkBG($imageUrl, $bgColor, $bgDarken: 25%) {
+  background-color: $bgColor;
+  background-image: url($imageUrl), radial-gradient(circle at center, $bgColor 0%, darken($bgColor, $bgDarken) 100%);
+}
+
 #menu {
   height: auto;
   top: 0;
@@ -37,10 +42,6 @@
         }
       }
 
-      @mixin linkBG($imageUrl, $bgColor, $bgDarken: 25%) {
-        background-color: $bgColor;
-        background-image: url($imageUrl), radial-gradient(circle at center, $bgColor 0%, darken($bgColor, $bgDarken) 100%);
-      }
       &.deviantart > * {
         @include linkBG("/img/icons/deviantart.svg", #4c5c52);
       }

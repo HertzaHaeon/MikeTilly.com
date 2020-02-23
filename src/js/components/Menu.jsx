@@ -9,9 +9,7 @@ function Menu({ height, width, x, y }) {
     <div
       id="menu"
       style={{
-        "--hex-size": `${width}px`,
-        left: x - width / 2,
-        top: y - height / 2
+        "--hex-size": `${width}px`
       }}
     >
       <ul className="hexMenu hexMenu--focusable">

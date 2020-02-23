@@ -14,9 +14,12 @@
   }
 
   .GalleryItem {
+    --x: 0px;
+    --y: 0px;
     outline: none;
     position: absolute;
-    transform: translate(-50%, -50%) scale(0.99);
+    transform: translate(var(--x), var(--y)) scale(0.99);
+    transform-origin: 50% 50%;
     transition-property: transform, opacity, left, top;
     transition-duration: 0.1s, 0.2s;
     transition-timing-function: ease-out, linear, ease-in-out;
@@ -37,7 +40,7 @@
     &:hover, &:focus {
       opacity: 1;
       filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.5));
-      transform: translate(-50%, -50%) scale(2);
+      transform: translate(var(--x), var(--y)) scale(2);
       z-index: 100;
     }
 

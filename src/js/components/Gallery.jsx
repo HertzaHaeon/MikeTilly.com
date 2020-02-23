@@ -28,18 +28,19 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   );
 
   useEffect(() => {
-    let size = style.gridSize * 10;
+    let tileSize = style.gridSize * 10;
     if (width <= breakpoints.sm) {
-      size = style.gridSize * 4;
+      tileSize = style.gridSize * 4;
     } else if (width <= breakpoints.md) {
-      size = size = style.gridSize * 6;
+      tileSize = tileSize = style.gridSize * 6;
     } else if (width <= breakpoints.lg) {
-      size = size = style.gridSize * 8;
+      tileSize = tileSize = style.gridSize * 8;
     }
     setHexGrid(
       hexgrid({
-        size,
         width,
+        tileSize,
+        tileOrigin: [hexgrid.tileOrigins.top, hexgrid.tileOrigins.left],
         totalCount: items.length
       })
     );
@@ -49,7 +50,7 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   if (hexGrid) {
     [firstGrid, ...otherGrid] = hexGrid.coordinates;
   }
-
+  console.log('Gallery', {hexGrid, items})
   return (
     <div className="Gallery" ref={hexSpaceElement}>
       {firstGrid && (
