@@ -19,6 +19,13 @@ export default class localJson {
         url: thumbnail.src,
         width: thumbnail.width,
         height: thumbnail.height
+      },
+      thumbnails: {
+        s: {
+          url: thumbnail.src,
+          width: thumbnail.width,
+          height: thumbnail.height
+        }
       }
     };
   }

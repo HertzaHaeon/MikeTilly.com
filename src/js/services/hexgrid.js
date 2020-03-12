@@ -3,7 +3,7 @@ const HEX_RATIO = 2 / Math.sqrt(3)
 /**
  * Calculate the coordinates for hexagonal tiles within a given area
  *
- * @param {object} [userOptions]
+ * @param {object} userOptions
  * @param {number} [userOptions.width] - Width of the grid
  * @param {number} [userOptions.height] - Height of the grid
  * @param {number} [userOptions.totalCount] - Total number of tiles to place
@@ -31,7 +31,6 @@ function hexgrid (userOptions) {
       return origin in hexgrid.tileOrigins ? hexgrid.tileOrigins[origin] : 0
     }
   })
-  console.log('hexgrid', options)
 
   let columns
   let rows

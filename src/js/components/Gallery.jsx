@@ -4,21 +4,21 @@ import { ResizeObserver } from '@juggle/resize-observer';
 import hexgrid from "../services/hexgrid";
 import Menu from "./Menu";
 import GalleryItem from "./GalleryItem";
+/**
+ * @type {Object.<string, number>}
+ */
 import * as breakpoints from "scss/_breakpoints.scss";
+/**
+ * @type {{gridSize: number}}
+ */
 import * as style from "scss/_variables.scss";
 
 const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
-  const [width, setWidth] = useState(0);
   const [hexGrid, setHexGrid] = useState(null);
+  const [width, setWidth] = useState(0);
+  
   const hexSpaceElement = useRef(null);
-
-  useEffect(() => {
-    resizeObserver.observe(hexSpaceElement.current);
-    return () => {
-      resizeObserver.unobserve(hexSpaceElement.current);
-    };
-  }, [hexSpaceElement.current]);
-
+  
   const { current: resizeObserver } = useRef(
     new ResizeObserver(([hexGridSize]) => {
       if (hexGridSize) {
@@ -26,6 +26,13 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
       }
     })
   );
+  
+  useEffect(() => {
+    resizeObserver.observe(hexSpaceElement.current);
+    return () => {
+      resizeObserver.unobserve(hexSpaceElement.current);
+    };
+  }, [hexSpaceElement.current]);
 
   useEffect(() => {
     let tileSize = style.gridSize * 10;
@@ -50,7 +57,7 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   if (hexGrid) {
     [firstGrid, ...otherGrid] = hexGrid.coordinates;
   }
-  console.log('Gallery', {hexGrid, items})
+
   return (
     <div className="Gallery" ref={hexSpaceElement}>
       {firstGrid && (

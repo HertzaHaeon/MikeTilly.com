@@ -33,6 +33,18 @@ export default class deviantArt {
         url: thumbnail.src,
         width: thumbnail.width,
         height: thumbnail.height
+      },
+      thumbnails: {
+        s: {
+          url: item.thumbs[1].src,
+          width: item.thumbs[1].width,
+          height: item.thumbs[1].height
+        },
+        m: {
+          url: item.thumbs[2].src,
+          width: item.thumbs[2].width,
+          height: item.thumbs[2].height
+        }
       }
     };
   }

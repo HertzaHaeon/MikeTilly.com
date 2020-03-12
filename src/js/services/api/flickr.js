@@ -1,7 +1,7 @@
 export default class Flickr {
   
   static fetchItems(count) {
-    let url = `${Flickr.config.endpoints.items}?method=flickr.people.getPublicPhotos&api_key=${Flickr.config.apiKey}&user_id=${Flickr.config.userId}&extras=date_upload,url_s&per_page=${count}&format=json&nojsoncallback=1`;
+    let url = `${Flickr.config.endpoints.items}?method=flickr.people.getPublicPhotos&api_key=${Flickr.config.apiKey}&user_id=${Flickr.config.userId}&extras=date_upload,url_s,url_m&per_page=${count}&format=json&nojsoncallback=1`;
 
     return fetch(url)
       .then(response => response.json())
@@ -15,7 +15,7 @@ export default class Flickr {
       .then(items => items.map(Flickr.parseItem))
   }
 
-  static parseItem(item, index) {
+  static parseItem(item) {
     return {
       id: item.id,
       title: item.title,
@@ -27,6 +27,18 @@ export default class Flickr {
         url: item.url_s,
         width: item.width_s,
         height: item.height_s
+      },
+      thumbnails: {
+        s: {
+          url: item.url_s,
+          width: item.width_s,
+          height: item.height_s
+        },
+        m: {
+          url: item.url_m,
+          width: item.width_m,
+          height: item.height_m
+        }
       }
     }
   }

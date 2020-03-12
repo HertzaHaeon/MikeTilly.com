@@ -8,6 +8,11 @@
       "thumbnail": {
         "url": "https://playsome.net/img/playsome_logo_big.svg"
       },
+      "thumbnails": {
+        "s": {
+          "url": "https://playsome.net/img/playsome_logo_big.svg"
+        }
+      },
       "url": "https://playsome.net"
     }
   ]
