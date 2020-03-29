@@ -5,7 +5,7 @@ import clamp from "../utils/clamp";
 const ORIENTATION_RANGE = 45;
 
 const GalleryItem = props => {
-  const { item, height, width, x, y, animate = true, className, ...otherProps } = props;
+  const { item, height, width, x, y, animate = true, titlePosition, className, ...otherProps } = props;
   const [backgroundImage, setBackgroundImage] = useState(null);
   const [isFocused, setIsFocused] = useState(false);
   const [backgroundPosition, setBackgroundPosition] = useState({ x: 0.5, y: 0.5 });
@@ -88,8 +88,8 @@ const GalleryItem = props => {
         className
       ])}
       style={{
-        height: height,
-        width: width,
+        height,
+        width,
         "--x": `${x}px`,
         "--y": `${y}px`
       }}
@@ -104,14 +104,21 @@ const GalleryItem = props => {
       {...otherProps}
     >
       <div
+        className="GalleryItem__image"
         style={{
           backgroundImage: backgroundImage ? `url(${backgroundImage})` : null,
           backgroundPosition: `${backgroundPosition.x * 100}% ${backgroundPosition.y * 100}%`,
         }}
       />
+      <div className={classNames('GalleryItem__title', titlePosition === GalleryItem.titlePositions.ABOVE && 'GalleryItem__title--above')} style={{width}}>{item.title}</div>
     </a>
   );
 };
+
+GalleryItem.titlePositions = {
+  BELOW: 'BELOW',
+  ABOVE: 'ABOVE',
+}
 
 const touchStartHandler = event => {
   const el = event.currentTarget;

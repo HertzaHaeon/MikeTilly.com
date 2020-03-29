@@ -11,7 +11,7 @@ const HEX_RATIO = 2 / Math.sqrt(3)
  * @param {number} [userOptions.rowOffset] - Whether even or odd rows are offset
  * @param {number} [userOptions.tileSize] - Size of tile
  * @param {<string, string>} [userOptions.tileOrigin] - Tile point of origin (top|middle|bottom left|center|right)
- * @returns {{columns: number, rows: number, width: number, height: number, coordinates: []}}
+ * @returns {{columns: number, rows: number, width: number, height: number, coordinates: [{x: number, y: number, column: number, row: number}]}}
  */
 function hexgrid (userOptions) {
   const options = {
@@ -58,7 +58,6 @@ function hexgrid (userOptions) {
   } else {
     rows = Math.ceil(options.totalCount / columns)
   }
-
 
   const coordinates = []
   if (columns > 0 && rows > 0) {

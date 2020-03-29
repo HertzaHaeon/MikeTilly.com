@@ -1,0 +1,15 @@
+@import "./variables";
+
+$hexSizes: (
+  "xl": $gridSize * 10,
+  "lg": $gridSize * 8,
+  "md": $gridSize * 6,
+  "sm": $gridSize * 4,
+);
+
+:export {
+  xl: map_get($hexSizes, xl) / 1px;
+  lg: map_get($hexSizes, lg) / 1px;
+  md: map_get($hexSizes, md) / 1px;
+  sm: map_get($hexSizes, sm) / 1px;
+}

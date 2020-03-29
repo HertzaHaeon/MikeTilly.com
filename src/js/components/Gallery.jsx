@@ -9,13 +9,14 @@ import GalleryItem from "./GalleryItem";
  */
 import * as breakpoints from "scss/_breakpoints.scss";
 /**
- * @type {{gridSize: number}}
+ * @type {Object.<string, number>}
  */
-import * as style from "scss/_variables.scss";
+import * as hexSizes from "scss/_hexSizes.scss";
 
 const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   const [hexGrid, setHexGrid] = useState(null);
   const [width, setWidth] = useState(0);
+  const [viewportHeightLimit, setViewportHeightLimit] = useState(0);
   
   const hexSpaceElement = useRef(null);
   
@@ -23,6 +24,7 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
     new ResizeObserver(([hexGridSize]) => {
       if (hexGridSize) {
         setWidth(hexGridSize.contentRect.width);
+        handleResizeScroll();
       }
     })
   );
@@ -33,15 +35,24 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
       resizeObserver.unobserve(hexSpaceElement.current);
     };
   }, [hexSpaceElement.current]);
+  
+  useEffect(() => {
+    window.addEventListener('scroll', handleResizeScroll)
+    return () => {
+      window.removeEventListener('scroll', handleResizeScroll)
+    }
+  })
 
   useEffect(() => {
-    let tileSize = style.gridSize * 10;
+    let tileSize;
     if (width <= breakpoints.sm) {
-      tileSize = style.gridSize * 4;
+      tileSize = parseInt(hexSizes.sm, 10);
     } else if (width <= breakpoints.md) {
-      tileSize = tileSize = style.gridSize * 6;
+      tileSize = parseInt(tileSize = hexSizes.md, 10);
     } else if (width <= breakpoints.lg) {
-      tileSize = tileSize = style.gridSize * 8;
+      tileSize = parseInt(hexSizes.lg, 10);
+    } else {
+      tileSize = parseInt(hexSizes.xl, 10);
     }
     setHexGrid(
       hexgrid({
@@ -52,6 +63,10 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
       })
     );
   }, [width, items]);
+  
+  const handleResizeScroll = () => {
+    setViewportHeightLimit(document.documentElement.scrollTop + document.documentElement.clientHeight / 2);
+  }
 
   let firstGrid, otherGrid
   if (hexGrid) {
@@ -80,6 +95,7 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
                 x={hexCoords.x}
                 y={hexCoords.y}
                 animate={items[index].animate}
+                titlePosition={hexCoords.y < viewportHeightLimit ? GalleryItem.titlePositions.BELOW : GalleryItem.titlePositions.ABOVE}
                 item={items[index]}
                 tabIndex={index + itemTabIndexOffset}
               />
