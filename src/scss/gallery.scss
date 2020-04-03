@@ -103,6 +103,21 @@
         top: auto;
         bottom: calc(100% - #{0.25rem / $GalleryItem-hoverScale});
       }
+      .GalleryItem__title__icon {
+        margin-right: 1rem / $GalleryItem-hoverScale;
+        height: 2rem / $GalleryItem-hoverScale;
+        width: 2rem / $GalleryItem-hoverScale;
+        vertical-align: middle;
+        @media (max-width: map_get($breakpoints, lg)) {
+          margin-right: 0.5rem / $GalleryItem-hoverScale;
+          height: 1rem / $GalleryItem-hoverScale;
+          width: 1rem / $GalleryItem-hoverScale;
+        }
+      }
+      span {
+        vertical-align: middle;
+
+      }
     }
     &:hover, &:focus {
       .GalleryItem__title {

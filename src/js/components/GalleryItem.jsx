@@ -6,14 +6,29 @@ import loadImage from "../utils/loadImage";
 const ORIENTATION_RANGE = 45;
 
 const GalleryItem = props => {
-  const { height, width, x, y, animate = true, url, src, title, titlePosition, isMature, className, ...otherProps } = props;
+  const {
+    height,
+    width,
+    x,
+    y,
+    provider,
+    url,
+    src,
+    iconSrc,
+    title,
+    titlePosition,
+    animate = true,
+    isMature,
+    className,
+    ...otherProps
+  } = props;
   const [backgroundImage, setBackgroundImage] = useState(null);
   const [isFocused, setIsFocused] = useState(false);
   const [backgroundPosition, setBackgroundPosition] = useState({ x: 0.5, y: 0.5 });
   const elementRef = useRef(null);
 
   useEffect(() => {
-    setBackgroundImage('');
+    setBackgroundImage("");
     const [imageLoaded, cancel] = loadImage(src);
     imageLoaded.then(() => setBackgroundImage(src)).catch(() => {});
     return cancel;
@@ -102,7 +117,10 @@ const GalleryItem = props => {
         )}
         style={{ width }}
       >
-        {title}
+        {iconSrc && (
+          <img src={iconSrc} alt="" className={`GalleryItem__title__icon GalleryItem__title__icon--${provider}`} />
+        )}{" "}
+        <span>{title}</span>
       </div>
     </a>
   );

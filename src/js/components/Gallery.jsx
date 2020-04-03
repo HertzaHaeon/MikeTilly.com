@@ -98,11 +98,13 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
                 width={hexGrid.width}
                 x={hexCoords.x}
                 y={hexCoords.y}
-                animate={items[index].animate}
+                provider={items[index].provider}
                 url={items[index].url}
                 src={selectItemSource(items[index].thumbnails, hexGrid.width * STYLE_VARS.GalleryItem_hoverScale, hexGrid.height * STYLE_VARS.GalleryItem_hoverScale)}
+                iconSrc={items[index].provider && `/img/icons/${items[index].provider}.svg`}
                 title={items[index].title}
                 titlePosition={hexCoords.y < viewportHeightLimit ? GalleryItem.titlePositions.BELOW : GalleryItem.titlePositions.ABOVE}
+                animate={items[index].animate}
                 isMature={items[index].isMature}
               />
             )

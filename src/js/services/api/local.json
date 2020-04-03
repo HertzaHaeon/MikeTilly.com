@@ -1,6 +1,7 @@
 {
   "items": [
     {
+      "provider": "github",
       "id": "local_playsome",
       "title": "Playsome - Playlist democracy web app",
       "dateTime": 9999999999,

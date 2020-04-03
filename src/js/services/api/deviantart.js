@@ -1,4 +1,6 @@
 export default class deviantArt {
+  static provider = 'deviantart';
+  
   static fetchItems(count) {
     const url = deviantArt.config.endpoints.items + '?';
     let calls = [];
@@ -22,6 +24,7 @@ export default class deviantArt {
 
   static parseItem(item) {
     return {
+      provider: deviantArt.provider,
       id: item.deviationid,
       title: item.title,
       url: item.url,
