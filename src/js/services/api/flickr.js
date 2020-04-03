@@ -1,7 +1,9 @@
+import { BREAKPOINTS } from 'enums';
+
 export default class Flickr {
   
   static fetchItems(count) {
-    let url = `${Flickr.config.endpoints.items}?method=flickr.people.getPublicPhotos&api_key=${Flickr.config.apiKey}&user_id=${Flickr.config.userId}&extras=date_upload,url_s,url_m&per_page=${count}&format=json&nojsoncallback=1`;
+    let url = `${Flickr.config.endpoints.items}?method=flickr.people.getPublicPhotos&api_key=${Flickr.config.apiKey}&user_id=${Flickr.config.userId}&extras=date_upload,url_s,url_m,url_l,url_k&per_page=${count}&format=json&nojsoncallback=1`;
 
     return fetch(url)
       .then(response => response.json())
@@ -28,18 +30,28 @@ export default class Flickr {
         width: item.width_s,
         height: item.height_s
       },
-      thumbnails: {
-        s: {
+      thumbnails: [
+        {
           url: item.url_s,
           width: item.width_s,
           height: item.height_s
         },
-        m: {
+        {
           url: item.url_m,
           width: item.width_m,
           height: item.height_m
+        },
+        {
+          url: item.url_l,
+          width: item.width_l,
+          height: item.height_l
+        },
+        {
+          url: item.url_k,
+          width: item.width_k,
+          height: item.height_k
         }
-      }
+      ]
     }
   }
 }

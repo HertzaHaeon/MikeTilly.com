@@ -1,8 +1,6 @@
 @import "_breakpoints";
 @import "_variables";
 
-$GalleryItem-animationDuration: 0.2s;
-$GalleryItem-hoverScale: 2;
 
 .Gallery {
   width: 100%;
@@ -21,7 +19,7 @@ $GalleryItem-hoverScale: 2;
     --y: 0px;
     outline: none;
     position: absolute;
-    transform: translate(var(--x), var(--y)) scale(0.99);
+    transform: translate(var(--x), var(--y)) scale(0.99) rotateZ(0);
     transform-origin: 50% 50%;
     transition-property: transform, opacity;
     transition-duration: $GalleryItem-animationDuration;
@@ -60,7 +58,11 @@ $GalleryItem-hoverScale: 2;
     }
 
     &.GalleryItem--loading {
-      opacity: 0.1;
+      opacity: 0.5;
+      animation: GalleryItemLoadingSpin;
+      animation-duration: $GalleryItem-animationDuration * 10;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
     }
 
     &.GalleryItem--mature {
@@ -107,5 +109,17 @@ $GalleryItem-hoverScale: 2;
         opacity: 1;
       }
     }
+  }
+}
+
+@keyframes GalleryItemLoadingSpin {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1.0;
+  }
+  100% {
+    opacity: 0.1;
   }
 }

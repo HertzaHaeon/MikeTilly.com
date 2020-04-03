@@ -20,32 +20,18 @@ export default class deviantArt {
     return 'thumbs' in item && item.thumbs.length;
   }
 
-  static parseItem(item, index) {
-    let thumbnail = item.thumbs.find(thumb => thumb.width >= 200 && thumb.height >= 200)
-    thumbnail = thumbnail || item.preview
+  static parseItem(item) {
     return {
       id: item.deviationid,
       title: item.title,
       url: item.url,
       dateTime: item.published_time,
       isMature: item.is_mature,
-      thumbnail: {
+      thumbnails: [...item.thumbs, item.preview].map(thumbnail => ({
         url: thumbnail.src,
         width: thumbnail.width,
         height: thumbnail.height
-      },
-      thumbnails: {
-        s: {
-          url: item.thumbs[1].src,
-          width: item.thumbs[1].width,
-          height: item.thumbs[1].height
-        },
-        m: {
-          url: item.thumbs[2].src,
-          width: item.thumbs[2].width,
-          height: item.thumbs[2].height
-        }
-      }
+      }))
     };
   }
 }

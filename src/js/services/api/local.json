@@ -5,14 +5,11 @@
       "title": "Playsome - Playlist democracy web app",
       "dateTime": 9999999999,
       "animate": false,
-      "thumbnail": {
-        "url": "https://playsome.net/img/playsome_logo_big.svg"
-      },
-      "thumbnails": {
-        "s": {
+      "thumbnails": [
+        {
           "url": "https://playsome.net/img/playsome_logo_big.svg"
         }
-      },
+      ],
       "url": "https://playsome.net"
     }
   ]
