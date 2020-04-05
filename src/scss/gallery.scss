@@ -1,7 +1,6 @@
 @import "_breakpoints";
 @import "_variables";
 
-
 .Gallery {
   width: 100%;
   height: calc(100% - 10rem);
@@ -43,13 +42,13 @@
     &:not(.GalleryItem--loading) {
       &:hover, &:focus {
         opacity: 1;
-        filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.5));
+        filter: $GalleryItem-dropShadow;
         transform: translate(var(--x), var(--y)) scale($GalleryItem-hoverScale);
         z-index: 100;
       }
       &.GalleryItem--mature {
         &:hover, &:focus {
-          filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.5));
+          filter: $GalleryItem-dropShadow;
           .GalleryItem__image {
             filter: none;
           }

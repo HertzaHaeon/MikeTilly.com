@@ -1,8 +1,10 @@
+@import "./variables";
+
 $breakpoints: (
-  "xl": 1200px,
-  "lg": 1024px,
-  "md": 640px,
-  "sm": 320px
+  "xl": $gridSize * 100,
+  "lg": $gridSize * 80,
+  "md": $gridSize * 60,
+  "sm": $gridSize * 40
 );
 
 :export {

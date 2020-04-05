@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ResizeObserver } from '@juggle/resize-observer';
 
-import hexgrid from "../services/hexgrid";
+import hexgrid, { HEXGRID_TILE_ORIGINS } from "../services/hexgrid";
 import Menu from "./Menu";
 import GalleryItem from "./GalleryItem";
 import { BREAKPOINTS } from 'enums';
@@ -20,7 +20,7 @@ import * as HEX_SIZES from "scss/_hexSizes.scss";
 
 const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   const [hexGrid, setHexGrid] = useState(null);
-  const [width, setWidth] = useState(0);
+  const [gridWidth, setGridWidth] = useState(0);
   const [viewportHeightLimit, setViewportHeightLimit] = useState(0);
   
   const hexSpaceElement = useRef(null);
@@ -28,7 +28,7 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   const { current: resizeObserver } = useRef(
     new ResizeObserver(([hexGridSize]) => {
       if (hexGridSize) {
-        setWidth(hexGridSize.contentRect.width);
+        setGridWidth(hexGridSize.contentRect.width);
         handleResizeScroll();
       }
     })
@@ -51,20 +51,20 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   useEffect(() => {
     let tileSize;
     for (const breakpoint of Object.keys(BREAKPOINTS)) {
-      if (width >= SCREEN_BREAKPOINTS[breakpoint]) {
-        tileSize = parseInt(HEX_SIZES[breakpoint], 10);
+      tileSize = parseInt(HEX_SIZES[breakpoint], 10);
+      if (window.innerWidth > SCREEN_BREAKPOINTS[breakpoint]) {
         break;
       }
     }
     setHexGrid(
       hexgrid({
-        width,
+        gridWidth,
         tileSize,
-        tileOrigin: [hexgrid.tileOrigins.top, hexgrid.tileOrigins.left],
-        totalCount: items.length
+        tileOrigin: [HEXGRID_TILE_ORIGINS.TOP, HEXGRID_TILE_ORIGINS.LEFT],
+        totalTileCount: items.length
       })
     );
-  }, [width, items]);
+  }, [window.innerWidth, gridWidth, items]);
   
   // Set middle of viewport plus scroll offset as breakpoint for titles flipping to top
   const handleResizeScroll = () => {
@@ -73,15 +73,15 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
 
   let firstGrid, otherGrid
   if (hexGrid) {
-    [firstGrid, ...otherGrid] = hexGrid.coordinates;
+    [firstGrid, ...otherGrid] = hexGrid.tiles.coordinates;
   }
 
   return (
-    <div className="Gallery" ref={hexSpaceElement}>
+    <div className="Gallery" style={hexGrid && {height: hexGrid.grid.height + 'px'}} ref={hexSpaceElement}>
       {firstGrid && (
         <Menu
-          height={hexGrid.height}
-          width={hexGrid.width}
+          height={hexGrid.tiles.height}
+          width={hexGrid.tiles.width}
           x={firstGrid.x}
           y={firstGrid.y}
         />
@@ -94,13 +94,13 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
                 key={items[index].id}
                 tabIndex={index + itemTabIndexOffset}
                 id={`GalleryItem-${items[index].id}`}
-                height={hexGrid.height}
-                width={hexGrid.width}
+                height={hexGrid.tiles.height}
+                width={hexGrid.tiles.width}
                 x={hexCoords.x}
                 y={hexCoords.y}
                 provider={items[index].provider}
                 url={items[index].url}
-                src={selectItemSource(items[index].thumbnails, hexGrid.width * STYLE_VARS.GalleryItem_hoverScale, hexGrid.height * STYLE_VARS.GalleryItem_hoverScale)}
+                src={selectItemSource(items[index].thumbnails, hexGrid.tiles.gridWidth * STYLE_VARS.GalleryItem_hoverScale, hexGrid.tiles.height * STYLE_VARS.GalleryItem_hoverScale)}
                 iconSrc={items[index].provider && `/img/icons/${items[index].provider}.svg`}
                 title={items[index].title}
                 titlePosition={hexCoords.y < viewportHeightLimit ? GalleryItem.titlePositions.BELOW : GalleryItem.titlePositions.ABOVE}
@@ -113,13 +113,13 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   );
 };
 
-function selectItemSource(sources, width, height) {
+function selectItemSource(sources, gridWidth, height) {
   let fallbackSource;
   for (const source of Object.values(sources)) {
     if (!fallbackSource) {
       fallbackSource = source;
     }
-    if (source.width >= width || source.height >= height) {
+    if (source.gridWidth >= gridWidth || source.height >= height) {
       return source.url;
     }
   }

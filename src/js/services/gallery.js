@@ -4,7 +4,7 @@ export default class GalleryService {
   static subscribe(subscriber, userOptions = {}) {
     const options = {
       count: userOptions.count || 20,
-      totalCount: userOptions.count || 20,
+      totalTileCount: userOptions.count || 20,
     }
     let items = []
     

@@ -1,14 +1,19 @@
+@import "_variables";
 @import "_breakpoints";
+@import "_hexSizes";
 
 #app {
-  padding: 5rem;
+  padding: (map_get($hexSizes, xl) / 2 / $HEX_RATIO) (map_get($hexSizes, xl) / 2);
   width: 100%;
-  min-width: map_get($breakpoints, sm);
+  min-width: 480px;
   min-height: 100%;
-  @media (max-width: map_get($breakpoints, md)) {
-    padding: 2.5rem;
+  @media (max-width: map_get($breakpoints, xl)) {
+    padding: (map_get($hexSizes, lg) / 2 / $HEX_RATIO) (map_get($hexSizes, lg) / 2);
   }
-  @media (max-width: map_get($breakpoints, sm)) {
-    padding: 1rem;
+  @media (max-width: map_get($breakpoints, lg)) {
+    padding: (map_get($hexSizes, md) / 2 / $HEX_RATIO) (map_get($hexSizes, md) / 2);
+  }
+  @media (max-width: map_get($breakpoints, md)) {
+    padding: (map_get($hexSizes, sm) / 2 / $HEX_RATIO) (map_get($hexSizes, sm) / 2);
   }
 }

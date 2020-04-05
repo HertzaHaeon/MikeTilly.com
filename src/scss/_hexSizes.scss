@@ -1,10 +1,10 @@
 @import "./variables";
 
 $hexSizes: (
-  "xl": $gridSize * 10,
-  "lg": $gridSize * 8,
-  "md": $gridSize * 6,
-  "sm": $gridSize * 4,
+  "xl": $gridSize * 12,
+  "lg": $gridSize * 10,
+  "md": $gridSize * 8,
+  "sm": $gridSize * 6,
 );
 
 :export {
