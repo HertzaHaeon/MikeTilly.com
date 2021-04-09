@@ -1,7 +1,7 @@
 @import "_variables";
 
 $hexScaling: 1;
-$hexColor: #64C7CC;
+$hexColor: #64c7cc;
 $hexTiming: 0.15s;
 
 :root {
@@ -80,17 +80,14 @@ $hexTiming: 0.15s;
     }
 
     &.hex--animate {
-      transition: background-position $hexTiming ease-in-out,
-      left $hexTiming ease-in-out,
-      top $hexTiming ease-in-out,
-      transform $hexTiming ease-in-out,
-      opacity $hexTiming linear,
-      visibility $hexTiming linear,
-      z-index $hexTiming linear;
+      transition: background-position $hexTiming ease-in-out, left $hexTiming ease-in-out, top $hexTiming ease-in-out,
+        transform $hexTiming ease-in-out, opacity $hexTiming linear, visibility $hexTiming linear,
+        z-index $hexTiming linear;
     }
   }
 
-  &:hover, &.hexMenu--focusable:focus-within {
+  &:hover,
+  &.hexMenu--focusable:focus-within {
     & > .hex {
       visibility: visible;
       // Generate hover offsets
@@ -109,7 +106,7 @@ $hexTiming: 0.15s;
       // Generate animation delays
       @for $n from 0 through 10 {
         &.hex--hoverDelay#{$n} {
-          transition-delay: $hexTiming*$n;
+          transition-delay: $hexTiming * $n;
         }
       }
     }

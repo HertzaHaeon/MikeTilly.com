@@ -39,6 +39,6 @@
   },
   "prettier": {
     "printWidth": 120,
-    "semicolons": false
+    "semi": false
   }
 }

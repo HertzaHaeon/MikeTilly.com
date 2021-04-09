@@ -1,10 +1,8 @@
 const BREAKPOINTS = {
-  xl: 'xl',
-  lg: 'lg',
-  md: 'md',
-  sm: 'sm',
+  xl: "xl",
+  lg: "lg",
+  md: "md",
+  sm: "sm",
 }
 
-export {
-  BREAKPOINTS
-}
+export { BREAKPOINTS }

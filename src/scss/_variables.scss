@@ -4,10 +4,10 @@ $gridSize: 16px;
 
 $palette0: #202020;
 $palette1: #064780;
-$palette2: #C6FFE9;
-$palette3: #D6D6D6;
-$palette4: #2A3338;
-$palette5: #1D242A;
+$palette2: #c6ffe9;
+$palette3: #d6d6d6;
+$palette4: #2a3338;
+$palette5: #1d242a;
 
 $GalleryItem-dropShadow: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.5));
 $GalleryItem-animationDuration: 0.2s;
@@ -16,4 +16,4 @@ $GalleryItem-hoverScale: 2;
 :export {
   gridSize: $gridSize / 1px;
   GalleryItem_hoverScale: $GalleryItem-hoverScale;
-};
+}

@@ -1,4 +1,4 @@
-import apis from "./apis";
+import apis from "./apis"
 
 export default class GalleryService {
   static subscribe(subscriber, userOptions = {}) {
@@ -7,29 +7,27 @@ export default class GalleryService {
       totalTileCount: userOptions.count || 20,
     }
     let items = []
-    
+
     Promise.all(
-      apis.map(api =>
-        api
-          .fetchItems(options.count)
-          .then(results => {
-            items = GalleryService.sortItems(items.concat(results))
-            subscriber.next(items)
-          })
+      apis.map((api) =>
+        api.fetchItems(options.count).then((results) => {
+          items = GalleryService.sortItems(items.concat(results))
+          subscriber.next(items)
+        })
       )
     )
   }
 
   static sortItems(items) {
-    return items.sort(function(a, b) {
+    return items.sort(function (a, b) {
       switch (false) {
         case !(a.dateTime > b.dateTime):
-          return -1;
+          return -1
         case !(a.dateTime < b.dateTime):
-          return 1;
+          return 1
         default:
-          return 0;
+          return 0
       }
-    });
+    })
   }
 }

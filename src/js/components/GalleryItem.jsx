@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import classNames from "classnames";
-import clamp from "../utils/clamp";
-import loadImage from "../utils/loadImage";
+import React, { useState, useEffect, useRef } from "react"
+import classNames from "classnames"
+import clamp from "../utils/clamp"
+import loadImage from "../utils/loadImage"
 
-const ORIENTATION_RANGE = 45;
+const ORIENTATION_RANGE = 45
 
-const GalleryItem = props => {
+const GalleryItem = (props) => {
   const {
     height,
     width,
@@ -21,62 +21,62 @@ const GalleryItem = props => {
     isMature,
     className,
     ...otherProps
-  } = props;
-  const [backgroundImage, setBackgroundImage] = useState(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const [backgroundPosition, setBackgroundPosition] = useState({ x: 0.5, y: 0.5 });
-  const elementRef = useRef(null);
+  } = props
+  const [backgroundImage, setBackgroundImage] = useState(null)
+  const [isFocused, setIsFocused] = useState(false)
+  const [backgroundPosition, setBackgroundPosition] = useState({ x: 0.5, y: 0.5 })
+  const elementRef = useRef(null)
 
   useEffect(() => {
-    setBackgroundImage("");
-    const [imageLoaded, cancel] = loadImage(src);
-    imageLoaded.then(() => setBackgroundImage(src)).catch(() => {});
-    return cancel;
-  }, [src, width, setBackgroundImage]);
+    setBackgroundImage("")
+    const [imageLoaded, cancel] = loadImage(src)
+    imageLoaded.then(() => setBackgroundImage(src)).catch(() => {})
+    return cancel
+  }, [src, width, setBackgroundImage])
 
   useEffect(() => {
     if ("DeviceOrientationEvent" in window && animate && isFocused) {
-      window.addEventListener("deviceorientation", orientationHandler);
+      window.addEventListener("deviceorientation", orientationHandler)
       return () => {
-        window.removeEventListener("deviceorientation", orientationHandler);
-      };
+        window.removeEventListener("deviceorientation", orientationHandler)
+      }
     }
-  }, [animate, isFocused]);
+  }, [animate, isFocused])
 
-  const focusAndBlurHandler = event => {
+  const focusAndBlurHandler = (event) => {
     if (event.type === "focus") {
-      setIsFocused(true);
+      setIsFocused(true)
     } else if (event.type === "blur") {
-      setIsFocused(false);
+      setIsFocused(false)
     }
-  };
+  }
 
-  const orientationHandler = event => {
-    const { gamma, beta } = event;
-    const x = (clamp(gamma, 0 - ORIENTATION_RANGE, ORIENTATION_RANGE) + ORIENTATION_RANGE) / (ORIENTATION_RANGE * 2);
+  const orientationHandler = (event) => {
+    const { gamma, beta } = event
+    const x = (clamp(gamma, 0 - ORIENTATION_RANGE, ORIENTATION_RANGE) + ORIENTATION_RANGE) / (ORIENTATION_RANGE * 2)
     const y =
-      (clamp(beta, 90 - ORIENTATION_RANGE, 90 + ORIENTATION_RANGE) - ORIENTATION_RANGE) / (ORIENTATION_RANGE * 2);
+      (clamp(beta, 90 - ORIENTATION_RANGE, 90 + ORIENTATION_RANGE) - ORIENTATION_RANGE) / (ORIENTATION_RANGE * 2)
     requestAnimationFrame(() => {
-      setBackgroundPosition({ x, y });
-    });
-  };
+      setBackgroundPosition({ x, y })
+    })
+  }
 
   const mouseEnterHandler = () => {
-    setIsFocused(true);
-  };
-  const mouseMoveHandler = event => {
-    const { clientX, clientY } = event;
-    const bounds = event.target.getBoundingClientRect();
+    setIsFocused(true)
+  }
+  const mouseMoveHandler = (event) => {
+    const { clientX, clientY } = event
+    const bounds = event.target.getBoundingClientRect()
     requestAnimationFrame(() => {
-      setBackgroundPosition({ x: (clientX - bounds.left) / bounds.width, y: (clientY - bounds.top) / bounds.height });
-    });
-  };
+      setBackgroundPosition({ x: (clientX - bounds.left) / bounds.width, y: (clientY - bounds.top) / bounds.height })
+    })
+  }
   const mouseOutHandler = () => {
     requestAnimationFrame(() => {
-      setBackgroundPosition({ x: 0.5, y: 0.5 });
-    });
-    setIsFocused(false);
-  };
+      setBackgroundPosition({ x: 0.5, y: 0.5 })
+    })
+    setIsFocused(false)
+  }
 
   return (
     <a
@@ -85,13 +85,13 @@ const GalleryItem = props => {
         "GalleryItem",
         !backgroundImage && "GalleryItem--loading",
         isMature && "GalleryItem--mature",
-        className
+        className,
       ])}
       style={{
         height,
         width,
         "--x": `${x}px`,
-        "--y": `${y}px`
+        "--y": `${y}px`,
       }}
       ref={elementRef}
       onMouseEnter={animate ? mouseEnterHandler : null}
@@ -107,7 +107,7 @@ const GalleryItem = props => {
         className="GalleryItem__image"
         style={{
           backgroundImage: backgroundImage ? `url(${backgroundImage})` : null,
-          backgroundPosition: `${backgroundPosition.x * 100}% ${backgroundPosition.y * 100}%`
+          backgroundPosition: `${backgroundPosition.x * 100}% ${backgroundPosition.y * 100}%`,
         }}
       />
       <div
@@ -123,25 +123,25 @@ const GalleryItem = props => {
         <span>{title}</span>
       </div>
     </a>
-  );
-};
+  )
+}
 
 GalleryItem.titlePositions = {
   BELOW: "BELOW",
-  ABOVE: "ABOVE"
-};
+  ABOVE: "ABOVE",
+}
 
-const touchStartHandler = event => {
-  const el = event.currentTarget;
+const touchStartHandler = (event) => {
+  const el = event.currentTarget
   if (document.activeElement === el) {
-    el.click();
+    el.click()
   } else {
-    el.focus();
+    el.focus()
   }
-};
+}
 
-const touchEndHandler = event => {
-  event.preventDefault();
-};
+const touchEndHandler = (event) => {
+  event.preventDefault()
+}
 
-export default GalleryItem;
+export default GalleryItem
