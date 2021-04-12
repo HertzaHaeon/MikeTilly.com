@@ -12,8 +12,3 @@ $palette5: #1d242a;
 $GalleryItem-dropShadow: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.5));
 $GalleryItem-animationDuration: 0.2s;
 $GalleryItem-hoverScale: 2;
-
-:export {
-  gridSize: $gridSize / 1px;
-  GalleryItem_hoverScale: $GalleryItem-hoverScale;
-}

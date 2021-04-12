@@ -6,10 +6,3 @@ $hexSizes: (
   "md": $gridSize * 8,
   "sm": $gridSize * 6,
 );
-
-:export {
-  xl: map_get($hexSizes, xl) / 1px;
-  lg: map_get($hexSizes, lg) / 1px;
-  md: map_get($hexSizes, md) / 1px;
-  sm: map_get($hexSizes, sm) / 1px;
-}

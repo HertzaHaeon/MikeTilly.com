@@ -1,0 +1,8 @@
+@import "../breakpoints";
+
+:export {
+  xl: map_get($breakpoints, xl) / 1px;
+  lg: map_get($breakpoints, lg) / 1px;
+  md: map_get($breakpoints, md) / 1px;
+  sm: map_get($breakpoints, sm) / 1px;
+}

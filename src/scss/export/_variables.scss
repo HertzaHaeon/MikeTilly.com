@@ -1,0 +1,6 @@
+@import "../variables";
+
+:export {
+  gridSize: $gridSize / 1px;
+  GalleryItem_hoverScale: $GalleryItem-hoverScale;
+}

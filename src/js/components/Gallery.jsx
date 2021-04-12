@@ -5,18 +5,7 @@ import hexgrid, { HEXGRID_TILE_ORIGINS } from "../services/hexgrid"
 import Menu from "./Menu"
 import GalleryItem from "./GalleryItem"
 import { BREAKPOINTS } from "enums"
-/**
- * @type {Object.<string, number>}
- */
-import * as STYLE_VARS from "scss/_variables.scss"
-/**
- * @type {Object.<string, number>}
- */
-import * as SCREEN_BREAKPOINTS from "scss/_breakpoints.scss"
-/**
- * @type {Object.<string, string>}
- */
-import * as HEX_SIZES from "scss/_hexSizes.scss"
+import { HEX_SIZES, SCREEN_BREAKPOINTS, STYLE_VARS } from "style"
 
 const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   const [hexGrid, setHexGrid] = useState(null)
@@ -51,7 +40,7 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   useEffect(() => {
     let tileSize
     for (const breakpoint of Object.keys(BREAKPOINTS)) {
-      tileSize = parseInt(HEX_SIZES[breakpoint], 10)
+      tileSize = HEX_SIZES[breakpoint]
       if (window.innerWidth > SCREEN_BREAKPOINTS[breakpoint]) {
         break
       }
