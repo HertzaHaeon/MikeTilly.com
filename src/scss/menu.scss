@@ -56,6 +56,9 @@
       &.goodreads > * {
         @include linkBG("../../assets/img/icons/goodreads.svg", #f0eee2, 50%);
       }
+      &.instagram > * {
+        @include linkBG("../../assets/img/icons/instagram.svg", #ffffff, 50%);
+      }
       &.lastfm > * {
         @include linkBG("../../assets/img/icons/lastfm.svg", #e21b23);
       }
