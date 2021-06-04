@@ -3,3 +3,4 @@ dist
 node_modules
 php
 temp
+.netlify

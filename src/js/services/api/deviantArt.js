@@ -42,6 +42,6 @@ export default class deviantArt {
 deviantArt.config = {
   maxLimit: 24,
   endpoints: {
-    items: "//www.miketilly.com/php/deviantart.php",
+    items: "/.netlify/functions/deviantArt",
   },
 }
