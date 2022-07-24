@@ -1,5 +1,5 @@
-import fetch from "node-fetch"
-import { URLSearchParams } from "url"
+const fetch = require("node-fetch")
+const URLSearchParams = require("url").URLSearchParams
 
 const URLS = {
   TOKEN: "https://www.deviantart.com/oauth2/token",
