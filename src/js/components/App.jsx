@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 
 import GalleryService from "../services/gallery"
 import Gallery from "./Gallery"
-import "main.scss"
+import "styles/main.css"
 
 const App = () => {
   const [items, setItems] = useState([])

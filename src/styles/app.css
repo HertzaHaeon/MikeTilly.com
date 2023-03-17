@@ -1,0 +1,15 @@
+#app {
+  padding: calc(var(--hexSize-xl) / 2 / var(--hexRatio)) calc(var(--hexSize-xl) / 2);
+  width: 100%;
+  min-width: 480px;
+  min-height: 100%;
+  @media (max-width: var(--breakpoint-xl)) {
+    padding: calc(var(--hexSize-lg) / 2 / var(--hexRatio)) calc(var(--hexSize-lg) / 2);
+  }
+  @media (max-width: map_get($breakpoints, lg)) {
+    padding: calc(var(--hexSize-md) / 2 / var(--hexRatio)) calc(var(--hexSize-md) / 2);
+  }
+  @media (max-width: map_get($breakpoints, md)) {
+    padding: calc(var(--hexSize-sm) / 2 / var(--hexRatio)) calc(var(--hexSize-sm) / 2);
+  }
+}

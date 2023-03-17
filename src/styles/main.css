@@ -1,23 +1,26 @@
 @import url("https://fonts.googleapis.com/css?family=Exo+2&display=swap");
-@import "../css/normalize.css";
-@import "_variables";
+@import "./normalize.css";
+@import "./variables.css";
+@import "./app.css";
+@import "./gallery.css";
+@import "./menu.css";
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-size: $gridSize;
+  font-size: var(--gridSize);
   width: 100%;
   height: 100%;
 }
 body {
-  background-color: $palette5;
+  background-color: var(--palette5);
   font-family: "Exo 2", sans-serif;
   width: 100%;
   height: 100%;
 }
 
-@import "./app";
+/* @import "./app";
 @import "./gallery";
-@import "./menu";
+@import "./menu"; */

@@ -4,8 +4,8 @@ import { ResizeObserver } from "@juggle/resize-observer"
 import hexgrid, { HEXGRID_TILE_ORIGINS } from "../services/hexgrid"
 import Menu from "./Menu"
 import GalleryItem from "./GalleryItem"
-import { BREAKPOINTS } from "enums"
-import { HEX_SIZES, SCREEN_BREAKPOINTS, STYLE_VARS } from "style"
+import { BREAKPOINTS } from "config/enums"
+import { HEX_SIZES, SCREEN_BREAKPOINTS, STYLE_VARS } from "config/style"
 
 const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   const [hexGrid, setHexGrid] = useState(null)
@@ -64,7 +64,7 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
   if (hexGrid) {
     ;[firstGrid, ...otherGrid] = hexGrid.tiles.coordinates
   }
-
+  console.log("Gallery", { items })
   return (
     <div className="Gallery" style={hexGrid && { height: hexGrid.grid.height + "px" }} ref={hexSpaceElement}>
       {firstGrid && <Menu height={hexGrid.tiles.height} width={hexGrid.tiles.width} x={firstGrid.x} y={firstGrid.y} />}
@@ -87,7 +87,7 @@ const Gallery = ({ items, itemTabIndexOffset = 0 }) => {
                   hexGrid.tiles.gridWidth * STYLE_VARS.GalleryItem_hoverScale,
                   hexGrid.tiles.height * STYLE_VARS.GalleryItem_hoverScale
                 )}
-                iconSrc={items[index].provider && `/img/icons/${items[index].provider}.svg`}
+                iconSrc={items[index].provider && `/icons/${items[index].provider}.svg`}
                 title={items[index].title}
                 titlePosition={
                   hexCoords.y < viewportHeightLimit

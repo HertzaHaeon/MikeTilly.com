@@ -1,0 +1,705 @@
+:root {
+  --hexSize: 100px;
+  --hexScaling: 1;
+  --hexColor: #64c7cc;
+  --hexTiming: 0.15s;
+}
+
+.hexMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  pointer-events: all;
+  filter: none;
+
+  & > .hex {
+    overflow: hidden;
+    display: block;
+    width: var(--hexSize);
+    height: calc(var(--hexSize) * (1 / var(--hexRatio)));
+    transform: scale(var(--hexScaling));
+    position: absolute;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    visibility: hidden;
+    & > * {
+      background-color: var(--hexColor);
+      color: #fff;
+      text-align: center;
+      line-height: calc(var(--hexSize) * (1 / var(--hexRatio)));
+      display: block;
+      height: 100%;
+      pointer-events: auto;
+    }
+    &.hex--visible {
+      visibility: visible;
+    }
+    &.hex--helper {
+      background-color: transparent;
+      transform: scale(1);
+      pointer-events: none;
+      & > * {
+        background-color: transparent;
+      }
+      &.hex--helper-2x {
+        left: calc(var(--hexSize) * (-0.5 * var(--hexScaling)) - (((var(--hexScaling) - 1) * 0.5) * var(--hexSize)));
+        top: 0;
+        width: calc(var(--hexSize) * 2 * var(--hexScaling));
+        height: calc(var(--hexSize) * 2 * var(--hexScaling));
+      }
+      &.hex--helper-3x {
+        left: calc(var(--hexSize) * -1);
+        top: 0;
+        width: calc(var(--hexSize) * 3);
+        height: calc(var(--hexSize) * 3);
+      }
+    }
+
+    &.hex--offsetY-15 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -15);
+    }
+    &.hex--offsetY-14 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -14);
+    }
+    &.hex--offsetY-13 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -13);
+    }
+    &.hex--offsetY-12 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -12);
+    }
+    &.hex--offsetY-11 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -11);
+    }
+    &.hex--offsetY-10 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -10);
+    }
+    &.hex--offsetY-9 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -9);
+    }
+    &.hex--offsetY-8 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -8);
+    }
+    &.hex--offsetY-7 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -7);
+    }
+    &.hex--offsetY-6 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -6);
+    }
+    &.hex--offsetY-5 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -5);
+    }
+    &.hex--offsetY-4 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -4);
+    }
+    &.hex--offsetY-3 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -3);
+    }
+    &.hex--offsetY-2 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -2);
+    }
+    &.hex--offsetY-1 {
+      top: calc(var(--hexSize) * var(--hexRatio) * -1);
+    }
+    &.hex--offsetY0 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 0);
+    }
+    &.hex--offsetY1 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 1);
+    }
+    &.hex--offsetY2 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 2);
+    }
+    &.hex--offsetY3 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 3);
+    }
+    &.hex--offsetY4 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 4);
+    }
+    &.hex--offsetY5 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 5);
+    }
+    &.hex--offsetY6 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 6);
+    }
+    &.hex--offsetY7 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 7);
+    }
+    &.hex--offsetY8 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 8);
+    }
+    &.hex--offsetY9 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 9);
+    }
+    &.hex--offsetY10 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 10);
+    }
+    &.hex--offsetY11 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 11);
+    }
+    &.hex--offsetY12 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 12);
+    }
+    &.hex--offsetY13 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 13);
+    }
+    &.hex--offsetY14 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 14);
+    }
+    &.hex--offsetY15 {
+      top: calc(var(--hexSize) * var(--hexRatio) * 15);
+    }
+
+    &.hex--offsetX-15 {
+      left: calc(var(--hexSize) * 0.5 * -15);
+    }
+    &.hex--offsetX-14 {
+      left: calc(var(--hexSize) * 0.5 * -14);
+    }
+    &.hex--offsetX-13 {
+      left: calc(var(--hexSize) * 0.5 * -13);
+    }
+    &.hex--offsetX-12 {
+      left: calc(var(--hexSize) * 0.5 * -12);
+    }
+    &.hex--offsetX-11 {
+      left: calc(var(--hexSize) * 0.5 * -11);
+    }
+    &.hex--offsetX-10 {
+      left: calc(var(--hexSize) * 0.5 * -10);
+    }
+    &.hex--offsetX-9 {
+      left: calc(var(--hexSize) * 0.5 * -9);
+    }
+    &.hex--offsetX-8 {
+      left: calc(var(--hexSize) * 0.5 * -8);
+    }
+    &.hex--offsetX-7 {
+      left: calc(var(--hexSize) * 0.5 * -7);
+    }
+    &.hex--offsetX-6 {
+      left: calc(var(--hexSize) * 0.5 * -6);
+    }
+    &.hex--offsetX-5 {
+      left: calc(var(--hexSize) * 0.5 * -5);
+    }
+    &.hex--offsetX-4 {
+      left: calc(var(--hexSize) * 0.5 * -4);
+    }
+    &.hex--offsetX-3 {
+      left: calc(var(--hexSize) * 0.5 * -3);
+    }
+    &.hex--offsetX-2 {
+      left: calc(var(--hexSize) * 0.5 * -2);
+    }
+    &.hex--offsetX-1 {
+      left: calc(var(--hexSize) * 0.5 * -1);
+    }
+    &.hex--offsetX0 {
+      left: calc(var(--hexSize) * 0.5 * 0);
+    }
+    &.hex--offsetX1 {
+      left: calc(var(--hexSize) * 0.5 * 1);
+    }
+    &.hex--offsetX2 {
+      left: calc(var(--hexSize) * 0.5 * 2);
+    }
+    &.hex--offsetX3 {
+      left: calc(var(--hexSize) * 0.5 * 3);
+    }
+    &.hex--offsetX4 {
+      left: calc(var(--hexSize) * 0.5 * 4);
+    }
+    &.hex--offsetX5 {
+      left: calc(var(--hexSize) * 0.5 * 5);
+    }
+    &.hex--offsetX6 {
+      left: calc(var(--hexSize) * 0.5 * 6);
+    }
+    &.hex--offsetX7 {
+      left: calc(var(--hexSize) * 0.5 * 7);
+    }
+    &.hex--offsetX8 {
+      left: calc(var(--hexSize) * 0.5 * 8);
+    }
+    &.hex--offsetX9 {
+      left: calc(var(--hexSize) * 0.5 * 9);
+    }
+    &.hex--offsetX10 {
+      left: calc(var(--hexSize) * 0.5 * 10);
+    }
+    &.hex--offsetX11 {
+      left: calc(var(--hexSize) * 0.5 * 11);
+    }
+    &.hex--offsetX12 {
+      left: calc(var(--hexSize) * 0.5 * 12);
+    }
+    &.hex--offsetX13 {
+      left: calc(var(--hexSize) * 0.5 * 13);
+    }
+    &.hex--offsetX14 {
+      left: calc(var(--hexSize) * 0.5 * 14);
+    }
+    &.hex--offsetX15 {
+      left: calc(var(--hexSize) * 0.5 * 15);
+    }
+
+    &.hex--z-15 {
+      z-index: -15;
+    }
+    &.hex--z-14 {
+      z-index: -14;
+    }
+    &.hex--z-13 {
+      z-index: -13;
+    }
+    &.hex--z-12 {
+      z-index: -12;
+    }
+    &.hex--z-11 {
+      z-index: -11;
+    }
+    &.hex--z-10 {
+      z-index: -10;
+    }
+    &.hex--z-9 {
+      z-index: -9;
+    }
+    &.hex--z-8 {
+      z-index: -8;
+    }
+    &.hex--z-7 {
+      z-index: -7;
+    }
+    &.hex--z-6 {
+      z-index: -6;
+    }
+    &.hex--z-5 {
+      z-index: -5;
+    }
+    &.hex--z-4 {
+      z-index: -4;
+    }
+    &.hex--z-3 {
+      z-index: -3;
+    }
+    &.hex--z-2 {
+      z-index: -2;
+    }
+    &.hex--z-1 {
+      z-index: -1;
+    }
+    &.hex--z0 {
+      z-index: 0;
+    }
+    &.hex--z1 {
+      z-index: 1;
+    }
+    &.hex--z2 {
+      z-index: 2;
+    }
+    &.hex--z3 {
+      z-index: 3;
+    }
+    &.hex--z4 {
+      z-index: 4;
+    }
+    &.hex--z5 {
+      z-index: 5;
+    }
+    &.hex--z6 {
+      z-index: 6;
+    }
+    &.hex--z7 {
+      z-index: 7;
+    }
+    &.hex--z8 {
+      z-index: 8;
+    }
+    &.hex--z9 {
+      z-index: 9;
+    }
+    &.hex--z10 {
+      z-index: 10;
+    }
+    &.hex--z11 {
+      z-index: 11;
+    }
+    &.hex--z12 {
+      z-index: 12;
+    }
+    &.hex--z13 {
+      z-index: 13;
+    }
+    &.hex--z14 {
+      z-index: 14;
+    }
+    &.hex--z15 {
+      z-index: 15;
+    }
+
+    &.hex {
+      &.hex--delay0 {
+        transition-delay: calc(var(--hexTiming) * 0);
+      }
+      &.hex--delay1 {
+        transition-delay: calc(var(--hexTiming) * 1);
+      }
+      &.hex--delay2 {
+        transition-delay: calc(var(--hexTiming) * 2);
+      }
+      &.hex--delay3 {
+        transition-delay: calc(var(--hexTiming) * 3);
+      }
+      &.hex--delay4 {
+        transition-delay: calc(var(--hexTiming) * 4);
+      }
+      &.hex--delay5 {
+        transition-delay: calc(var(--hexTiming) * 5);
+      }
+      &.hex--delay6 {
+        transition-delay: calc(var(--hexTiming) * 6);
+      }
+      &.hex--delay7 {
+        transition-delay: calc(var(--hexTiming) * 7);
+      }
+      &.hex--delay8 {
+        transition-delay: calc(var(--hexTiming) * 8);
+      }
+      &.hex--delay9 {
+        transition-delay: calc(var(--hexTiming) * 9);
+      }
+      &.hex--delay10 {
+        transition-delay: calc(var(--hexTiming) * 10);
+      }
+    }
+
+    &.hex--animate {
+      transition: background-position var(--hexTiming) ease-in-out, left var(--hexTiming) ease-in-out,
+        top var(--hexTiming) ease-in-out, transform var(--hexTiming) ease-in-out, opacity var(--hexTiming) linear,
+        visibility var(--hexTiming) linear, z-index var(--hexTiming) linear;
+    }
+  }
+
+  &:hover,
+  &.hexMenu--focusable:focus-within {
+    & > .hex {
+      visibility: visible;
+
+      &.hex--hoverOffsetY-15 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -15);
+      }
+      &.hex--hoverOffsetY-14 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -14);
+      }
+      &.hex--hoverOffsetY-13 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -13);
+      }
+      &.hex--hoverOffsetY-12 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -12);
+      }
+      &.hex--hoverOffsetY-11 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -11);
+      }
+      &.hex--hoverOffsetY-10 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -10);
+      }
+      &.hex--hoverOffsetY-9 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -9);
+      }
+      &.hex--hoverOffsetY-8 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -8);
+      }
+      &.hex--hoverOffsetY-7 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -7);
+      }
+      &.hex--hoverOffsetY-6 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -6);
+      }
+      &.hex--hoverOffsetY-5 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -5);
+      }
+      &.hex--hoverOffsetY-4 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -4);
+      }
+      &.hex--hoverOffsetY-3 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -3);
+      }
+      &.hex--hoverOffsetY-2 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -2);
+      }
+      &.hex--hoverOffsetY-1 {
+        top: calc(var(--hexSize) * var(--hexRatio) * -1);
+      }
+      &.hex--hoverOffsetY0 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 0);
+      }
+      &.hex--hoverOffsetY1 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 1);
+      }
+      &.hex--hoverOffsetY2 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 2);
+      }
+      &.hex--hoverOffsetY3 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 3);
+      }
+      &.hex--hoverOffsetY4 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 4);
+      }
+      &.hex--hoverOffsetY5 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 5);
+      }
+      &.hex--hoverOffsetY6 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 6);
+      }
+      &.hex--hoverOffsetY7 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 7);
+      }
+      &.hex--hoverOffsetY8 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 8);
+      }
+      &.hex--hoverOffsetY9 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 9);
+      }
+      &.hex--hoverOffsetY10 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 10);
+      }
+      &.hex--hoverOffsetY11 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 11);
+      }
+      &.hex--hoverOffsetY12 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 12);
+      }
+      &.hex--hoverOffsetY13 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 13);
+      }
+      &.hex--hoverOffsetY14 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 14);
+      }
+      &.hex--hoverOffsetY15 {
+        top: calc(var(--hexSize) * var(--hexRatio) * 15);
+      }
+
+      &.hex--hoverOffsetX-15 {
+        left: calc(var(--hexSize) * 0.5 * -15);
+      }
+      &.hex--hoverOffsetX-14 {
+        left: calc(var(--hexSize) * 0.5 * -14);
+      }
+      &.hex--hoverOffsetX-13 {
+        left: calc(var(--hexSize) * 0.5 * -13);
+      }
+      &.hex--hoverOffsetX-12 {
+        left: calc(var(--hexSize) * 0.5 * -12);
+      }
+      &.hex--hoverOffsetX-11 {
+        left: calc(var(--hexSize) * 0.5 * -11);
+      }
+      &.hex--hoverOffsetX-10 {
+        left: calc(var(--hexSize) * 0.5 * -10);
+      }
+      &.hex--hoverOffsetX-9 {
+        left: calc(var(--hexSize) * 0.5 * -9);
+      }
+      &.hex--hoverOffsetX-8 {
+        left: calc(var(--hexSize) * 0.5 * -8);
+      }
+      &.hex--hoverOffsetX-7 {
+        left: calc(var(--hexSize) * 0.5 * -7);
+      }
+      &.hex--hoverOffsetX-6 {
+        left: calc(var(--hexSize) * 0.5 * -6);
+      }
+      &.hex--hoverOffsetX-5 {
+        left: calc(var(--hexSize) * 0.5 * -5);
+      }
+      &.hex--hoverOffsetX-4 {
+        left: calc(var(--hexSize) * 0.5 * -4);
+      }
+      &.hex--hoverOffsetX-3 {
+        left: calc(var(--hexSize) * 0.5 * -3);
+      }
+      &.hex--hoverOffsetX-2 {
+        left: calc(var(--hexSize) * 0.5 * -2);
+      }
+      &.hex--hoverOffsetX-1 {
+        left: calc(var(--hexSize) * 0.5 * -1);
+      }
+      &.hex--hoverOffsetX0 {
+        left: calc(var(--hexSize) * 0.5 * 0);
+      }
+      &.hex--hoverOffsetX1 {
+        left: calc(var(--hexSize) * 0.5 * 1);
+      }
+      &.hex--hoverOffsetX2 {
+        left: calc(var(--hexSize) * 0.5 * 2);
+      }
+      &.hex--hoverOffsetX3 {
+        left: calc(var(--hexSize) * 0.5 * 3);
+      }
+      &.hex--hoverOffsetX4 {
+        left: calc(var(--hexSize) * 0.5 * 4);
+      }
+      &.hex--hoverOffsetX5 {
+        left: calc(var(--hexSize) * 0.5 * 5);
+      }
+      &.hex--hoverOffsetX6 {
+        left: calc(var(--hexSize) * 0.5 * 6);
+      }
+      &.hex--hoverOffsetX7 {
+        left: calc(var(--hexSize) * 0.5 * 7);
+      }
+      &.hex--hoverOffsetX8 {
+        left: calc(var(--hexSize) * 0.5 * 8);
+      }
+      &.hex--hoverOffsetX9 {
+        left: calc(var(--hexSize) * 0.5 * 9);
+      }
+      &.hex--hoverOffsetX10 {
+        left: calc(var(--hexSize) * 0.5 * 10);
+      }
+      &.hex--hoverOffsetX11 {
+        left: calc(var(--hexSize) * 0.5 * 11);
+      }
+      &.hex--hoverOffsetX12 {
+        left: calc(var(--hexSize) * 0.5 * 12);
+      }
+      &.hex--hoverOffsetX13 {
+        left: calc(var(--hexSize) * 0.5 * 13);
+      }
+      &.hex--hoverOffsetX14 {
+        left: calc(var(--hexSize) * 0.5 * 14);
+      }
+      &.hex--hoverOffsetX15 {
+        left: calc(var(--hexSize) * 0.5 * 15);
+      }
+
+      &.hex--hoverZ-15 {
+        z-index: calc(-15 + 1000);
+      }
+      &.hex--hoverZ-14 {
+        z-index: calc(-14 + 1000);
+      }
+      &.hex--hoverZ-13 {
+        z-index: calc(-13 + 1000);
+      }
+      &.hex--hoverZ-12 {
+        z-index: calc(-12 + 1000);
+      }
+      &.hex--hoverZ-11 {
+        z-index: calc(-11 + 1000);
+      }
+      &.hex--hoverZ-10 {
+        z-index: calc(-10 + 1000);
+      }
+      &.hex--hoverZ-9 {
+        z-index: calc(-9 + 1000);
+      }
+      &.hex--hoverZ-8 {
+        z-index: calc(-8 + 1000);
+      }
+      &.hex--hoverZ-7 {
+        z-index: calc(-7 + 1000);
+      }
+      &.hex--hoverZ-6 {
+        z-index: calc(-6 + 1000);
+      }
+      &.hex--hoverZ-5 {
+        z-index: calc(-5 + 1000);
+      }
+      &.hex--hoverZ-4 {
+        z-index: calc(-4 + 1000);
+      }
+      &.hex--hoverZ-3 {
+        z-index: calc(-3 + 1000);
+      }
+      &.hex--hoverZ-2 {
+        z-index: calc(-2 + 1000);
+      }
+      &.hex--hoverZ-1 {
+        z-index: calc(-1 + 1000);
+      }
+      &.hex--hoverZ0 {
+        z-index: calc(0 + 1000);
+      }
+      &.hex--hoverZ1 {
+        z-index: calc(1 + 1000);
+      }
+      &.hex--hoverZ2 {
+        z-index: calc(2 + 1000);
+      }
+      &.hex--hoverZ3 {
+        z-index: calc(3 + 1000);
+      }
+      &.hex--hoverZ4 {
+        z-index: calc(4 + 1000);
+      }
+      &.hex--hoverZ5 {
+        z-index: calc(5 + 1000);
+      }
+      &.hex--hoverZ6 {
+        z-index: calc(6 + 1000);
+      }
+      &.hex--hoverZ7 {
+        z-index: calc(7 + 1000);
+      }
+      &.hex--hoverZ8 {
+        z-index: calc(8 + 1000);
+      }
+      &.hex--hoverZ9 {
+        z-index: calc(9 + 1000);
+      }
+      &.hex--hoverZ10 {
+        z-index: calc(10 + 1000);
+      }
+      &.hex--hoverZ11 {
+        z-index: calc(11 + 1000);
+      }
+      &.hex--hoverZ12 {
+        z-index: calc(12 + 1000);
+      }
+      &.hex--hoverZ13 {
+        z-index: calc(13 + 1000);
+      }
+      &.hex--hoverZ14 {
+        z-index: calc(14 + 1000);
+      }
+      &.hex--hoverZ15 {
+        z-index: calc(15 + 1000);
+      }
+
+      &.hex--hoverDelay0 {
+        transition-delay: calc(var(--hexTiming) * 0);
+      }
+      &.hex--hoverDelay1 {
+        transition-delay: calc(var(--hexTiming) * 1);
+      }
+      &.hex--hoverDelay2 {
+        transition-delay: calc(var(--hexTiming) * 2);
+      }
+      &.hex--hoverDelay3 {
+        transition-delay: calc(var(--hexTiming) * 3);
+      }
+      &.hex--hoverDelay4 {
+        transition-delay: calc(var(--hexTiming) * 4);
+      }
+      &.hex--hoverDelay5 {
+        transition-delay: calc(var(--hexTiming) * 5);
+      }
+      &.hex--hoverDelay6 {
+        transition-delay: calc(var(--hexTiming) * 6);
+      }
+      &.hex--hoverDelay7 {
+        transition-delay: calc(var(--hexTiming) * 7);
+      }
+      &.hex--hoverDelay8 {
+        transition-delay: calc(var(--hexTiming) * 8);
+      }
+      &.hex--hoverDelay9 {
+        transition-delay: calc(var(--hexTiming) * 9);
+      }
+      &.hex--hoverDelay10 {
+        transition-delay: calc(var(--hexTiming) * 10);
+      }
+    }
+  }
+}

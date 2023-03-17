@@ -1,0 +1,94 @@
+@import "./hexMenu.css";
+
+#menu {
+  color: #d6d6d6;
+  height: auto;
+  top: 0;
+  position: absolute;
+
+  .hexMenu {
+    z-index: 11;
+    .hex.mike {
+      background-color: transparent;
+      outline: none;
+      overflow: visible;
+      clip-path: none;
+      position: absolute;
+      & > * {
+        background-color: transparent;
+      }
+    }
+    &:hover,
+    &:focus-within {
+      filter: drop-shadow(10px 10px 0 rgba(0, 0, 0, 0.5));
+    }
+    .hex {
+      vertical-align: middle;
+      &:not(.hex--helper) {
+        & > * {
+          background-size: calc(var(--hexSize) / 3) calc(var(--hexSize) / (3 / var(--hexRatio))), 100% 100%;
+          background-position: 50% 50%, 50% 50%;
+          background-repeat: no-repeat;
+          transition: background-size var(--hexTiming) ease-in-out;
+        }
+        &:hover,
+        &:focus-within {
+          & > * {
+            background-size: calc(var(--hexSize) / 2) calc(var(--hexSize) / (2 / var(--hexRatio))), 100% 100%;
+          }
+        }
+      }
+
+      & > * {
+        background-color: var(--bgColor);
+        background-image: var(--imageUrl), radial-gradient(circle at center, transparent 0%, var(--bgColor2) 100%);
+      }
+
+      &.deviantart > * {
+        --imageUrl: url("icons/deviantart.svg");
+        --bgColor: #4c5c52;
+        --bgColor2: rgba(0, 0, 0, 0.75);
+      }
+      &.flickr > * {
+        --imageUrl: url("icons/flickr.svg");
+        --bgColor: #fff;
+        --bgColor2: rgba(0, 0, 0, 0.5);
+      }
+      &.github > * {
+        --imageUrl: url("icons/github.svg");
+        --bgColor: #fff;
+        --bgColor2: rgba(0, 0, 0, 0.5);
+      }
+      &.goodreads > * {
+        --imageUrl: url("icons/goodreads.svg");
+        --bgColor: #f0eee2;
+        --bgColor2: rgba(0, 0, 0, 0.5);
+      }
+      &.instagram > * {
+        --imageUrl: url("icons/instagram.svg");
+        --bgColor: #fff;
+        --bgColor2: rgba(0, 0, 0, 0.5);
+      }
+      &.lastfm > * {
+        --imageUrl: url("icons/lastfm.svg");
+        --bgColor: #e21b23;
+        --bgColor2: rgba(0, 0, 0, 0.75);
+      }
+      &.linkedin > * {
+        --imageUrl: url("icons/linkedin.svg");
+        --bgColor: #0073b2;
+        --bgColor2: rgba(0, 0, 0, 0.75);
+      }
+      &.spotify > * {
+        --imageUrl: url("icons/spotify.svg");
+        --bgColor: #302f2f;
+        --bgColor2: rgba(0, 0, 0, 0.75);
+      }
+      &.steam > * {
+        --imageUrl: url("icons/steam.svg");
+        --bgColor: #2b2f38;
+        --bgColor2: rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+}

@@ -1,3 +1,6 @@
 module.exports = {
-  plugins: [require('cssnano')],
+  plugins: {
+    "postcss-nesting": {},
+    autoprefixer: {},
+  },
 }

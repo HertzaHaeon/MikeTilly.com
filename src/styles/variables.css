@@ -1,0 +1,26 @@
+:root {
+  --hexRatio: 0.8660254;
+
+  --gridSize: 16px;
+
+  --palette0: #202020;
+  --palette1: #064780;
+  --palette2: #c6ffe9;
+  --palette3: #d6d6d6;
+  --palette4: #2a3338;
+  --palette5: #1d242a;
+
+  --breakpoint-xl: calc(var(--gridSize) * 100);
+  --breakpoint-lg: calc(var(--gridSize) * 80);
+  --breakpoint-md: calc(var(--gridSize) * 60);
+  --breakpoint-sm: calc(var(--gridSize) * 40);
+
+  --hexSize-xl: calc(var(--gridSize) * 12);
+  --hexSize-lg: calc(var(--gridSize) * 10);
+  --hexSize-md: calc(var(--gridSize) * 8);
+  --hexSize-sm: calc(var(--gridSize) * 6);
+
+  --GalleryItem-dropShadow: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.5));
+  --GalleryItem-animationDuration: 0.2s;
+  --GalleryItem-hoverScale: 2;
+}

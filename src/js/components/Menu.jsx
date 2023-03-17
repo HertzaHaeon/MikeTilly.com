@@ -1,7 +1,7 @@
 import React from "react"
 
 import { counter } from "utils"
-import Mike from "img/Mike_avatar_hex.svg"
+import { ReactComponent as Mike } from "assets/img/Mike_avatar_hex.svg"
 
 const Y_SCALE = 1.03345
 const Y_OFFSET = -0.045
@@ -12,7 +12,7 @@ function Menu({ height, width, x, y }) {
     <div
       id="menu"
       style={{
-        "--hex-size": `${width}px`,
+        "--hexSize": `${width}px`,
       }}
     >
       <ul className="hexMenu hexMenu--focusable">

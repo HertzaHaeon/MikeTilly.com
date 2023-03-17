@@ -1,6 +1,3 @@
-@import "_breakpoints";
-@import "_variables";
-
 .Gallery {
   width: 100%;
   height: calc(100% - 10rem);
@@ -22,13 +19,13 @@
     transform: translate(var(--x), var(--y)) scale(0.99) rotateZ(0);
     transform-origin: 50% 50%;
     transition-property: transform, opacity;
-    transition-duration: $GalleryItem-animationDuration;
+    transition-duration: var(--GalleryItem-animationDuration);
     transition-timing-function: ease-out, linear;
     z-index: 0;
     display: block;
     pointer-events: none;
     .GalleryItem__image {
-      background-color: $palette0;
+      background-color: var(--palette0);
       background-size: cover;
       background-position: 50% 50%;
       height: 100%;
@@ -44,14 +41,14 @@
       &:hover,
       &:focus {
         opacity: 1;
-        filter: $GalleryItem-dropShadow;
-        transform: translate(var(--x), var(--y)) scale($GalleryItem-hoverScale);
+        filter: var(--GalleryItem-dropShadow);
+        transform: translate(var(--x), var(--y)) scale(var(--GalleryItem-hoverScale));
         z-index: 100;
       }
       &.GalleryItem--mature {
         &:hover,
         &:focus {
-          filter: $GalleryItem-dropShadow;
+          filter: var(--GalleryItem-dropShadow);
           .GalleryItem__image {
             filter: none;
           }
@@ -62,7 +59,7 @@
     &.GalleryItem--loading {
       opacity: 0.5;
       animation: GalleryItemLoadingSpin;
-      animation-duration: $GalleryItem-animationDuration * 10;
+      animation-duration: calc(var(--GalleryItem-animationDuration) * 10);
       animation-iteration-count: infinite;
       animation-timing-function: linear;
     }
@@ -81,39 +78,39 @@
     }
 
     .GalleryItem__title {
-      background-color: $palette4;
-      color: $palette3;
-      font-size: 1.25rem / $GalleryItem-hoverScale;
-      line-height: 1.5rem / $GalleryItem-hoverScale;
+      background-color: var(--palette4);
+      color: var(--palette3);
+      font-size: calc(1.25rem / var(--GalleryItem-hoverScale));
+      line-height: calc(1.5rem / var(--GalleryItem-hoverScale));
       text-align: center;
-      padding: 0.5rem / $GalleryItem-hoverScale;
+      padding: calc(0.5rem / var(--GalleryItem-hoverScale));
       position: absolute;
-      top: calc(100% - #{0.25rem / $GalleryItem-hoverScale});
+      top: calc(100% - (0.25rem / var(--GalleryItem-hoverScale)));
       z-index: 1;
       opacity: 0;
       transition-property: opacity;
-      transition-duration: $GalleryItem-animationDuration;
-      transition-delay: $GalleryItem-animationDuration;
+      transition-duration: var(--GalleryItem-animationDuration);
+      transition-delay: var(--GalleryItem-animationDuration);
       transition-timing-function: linear;
-      @media (max-width: map_get($breakpoints, lg)) {
-        font-size: 1rem / $GalleryItem-hoverScale;
-        line-height: 1.5rem / $GalleryItem-hoverScale;
-        padding: 0.25rem / $GalleryItem-hoverScale;
-        top: calc(100% - #{0.125rem / $GalleryItem-hoverScale});
+      @media (max-width: var(--breakpoint-lg)) {
+        font-size: calc(1rem / var(--GalleryItem-hoverScale));
+        line-height: calc(1.5rem / var(--GalleryItem-hoverScale));
+        padding: calc(0.25rem / var(--GalleryItem-hoverScale));
+        top: calc(100% - (0.125rem / var(--GalleryItem-hoverScale)));
       }
       &.GalleryItem__title--above {
         top: auto;
-        bottom: calc(100% - #{0.25rem / $GalleryItem-hoverScale});
+        bottom: calc(100% - (0.25rem / var(--GalleryItem-hoverScale)));
       }
       .GalleryItem__title__icon {
-        margin-right: 1rem / $GalleryItem-hoverScale;
-        height: 2rem / $GalleryItem-hoverScale;
-        width: 2rem / $GalleryItem-hoverScale;
+        margin-right: calc(1rem / var(--GalleryItem-hoverScale));
+        height: calc(2rem / var(--GalleryItem-hoverScale));
+        width: calc(2rem / var(--GalleryItem-hoverScale));
         vertical-align: middle;
-        @media (max-width: map_get($breakpoints, lg)) {
-          margin-right: 0.5rem / $GalleryItem-hoverScale;
-          height: 1rem / $GalleryItem-hoverScale;
-          width: 1rem / $GalleryItem-hoverScale;
+        @media (max-width: var(--breakpoint-lg)) {
+          margin-right: calc(0.5rem / var(--GalleryItem-hoverScale));
+          height: calc(1rem / var(--GalleryItem-hoverScale));
+          width: calc(1rem / var(--GalleryItem-hoverScale));
         }
       }
       span {
